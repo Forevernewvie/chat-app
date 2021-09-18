@@ -6,9 +6,4 @@ import com.google.firebase.database.FirebaseDatabase
 object ChatRoomDataBase {
     val database : FirebaseDatabase = FirebaseDatabase.getInstance()
     val chatRoomRef : DatabaseReference = database.getReference("chatRoomContent")
-<<<<<<< HEAD
-
-
-=======
->>>>>>> chat
 }

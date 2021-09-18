@@ -6,17 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
-import com.jaebin.what.FireBaseAPi.Authentication
-import com.jaebin.what.FireBaseAPi.Authentication.auth
-=======
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -31,33 +20,21 @@ import com.jaebin.what.FireBaseAPi.Authentication
 import com.jaebin.what.FireBaseAPi.Authentication.auth
 import com.jaebin.what.FireBaseAPi.Authentication.signUtil
 import com.jaebin.what.KeyVariable.RC_SIGN_IN
->>>>>>> chat
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentMainBinding
 
 
 class MainFragment: Fragment() {
 
-<<<<<<< HEAD
-    private var mBinding : FragmentMainBinding?=null
-    private val binding get() = mBinding!!
-=======
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
     private lateinit var googleSignInClient: GoogleSignInClient
->>>>>>> chat
     private lateinit var navController: NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-<<<<<<< HEAD
-        mBinding = FragmentMainBinding.inflate(inflater,container,false)
-        return binding.root
-    }
-
-=======
         mBinding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -67,7 +44,6 @@ class MainFragment: Fragment() {
         signUtil.checkLogin(auth.currentUser,this)
     }
 
->>>>>>> chat
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -77,33 +53,6 @@ class MainFragment: Fragment() {
             it.findNavController().navigate(R.id.action_mainFragment_to_signUpFragment)
         }
 
-<<<<<<< HEAD
-
-        binding.Login.setOnClickListener {
-            val email = binding.emailText.text.toString()
-            val pwd = binding.pwdText.text.toString()
-            if (email == "" || pwd == ""){
-                Toast.makeText(context,"아이디와 패스워드를 입력해주세요", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                auth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        navController=findNavController()
-                        navController.navigate(R.id.action_mainFragment_to_bottomViewActivity)
-                        Toast.makeText(context,"로그인 완료", Toast.LENGTH_SHORT).show()
-
-                    }else{
-                        Toast.makeText(context,"로그인 실패", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-        }
-
-    }
-
-
-}
-=======
         binding.Login.setOnClickListener {
             val email = binding.emailText.text.toString()
             val pwd = binding.pwdText.text.toString()
@@ -167,4 +116,3 @@ class MainFragment: Fragment() {
 
 
 
->>>>>>> chat

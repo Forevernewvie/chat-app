@@ -24,15 +24,11 @@
         android:id="@+id/fragment_info"
         android:name="com.jaebin.what.bottomView.InfoFragment"
         tools:layout="@layout/fragment_info"
-<<<<<<< HEAD
-        android:label="InfoFragment" />
-=======
         android:label="InfoFragment" >
         <action
             android:id="@+id/action_fragment_info_to_mainFragment2"
             app:destination="@id/mainFragment2" />
     </fragment>
->>>>>>> chat
     <fragment
         android:id="@+id/createProfile"
         tools:layout="@layout/fragment_create_profile"
@@ -57,12 +53,9 @@
         android:name="com.jaebin.what.ui.ChatRoomFragment"
         android:label="ChatRoomFragment" >
     </fragment>
-<<<<<<< HEAD
-=======
     <fragment
         tools:layout="@layout/fragment_main"
         android:id="@+id/mainFragment2"
         android:name="com.jaebin.what.ui.MainFragment"
         android:label="MainFragment" />
->>>>>>> chat
 </navigation>

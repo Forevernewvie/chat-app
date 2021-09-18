@@ -21,10 +21,6 @@
             android:layout_height="?attr/actionBarSize"
             android:backgroundTint="#5B90BA"
             android:layout_gravity="center_horizontal"
-<<<<<<< HEAD
-            app:title="일하는 m생들"
-=======
->>>>>>> chat
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
              />
 
@@ -35,11 +31,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-<<<<<<< HEAD
-        android:layout_margin="16dp"
-=======
         android:layout_margin="10dp"
->>>>>>> chat
       />
     <LinearLayout
         android:id="@+id/sendMsgLayout"
@@ -49,8 +41,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/write_chat_view"
         >
-<<<<<<< HEAD
-=======
 
         <ImageView
             android:id="@+id/imgContent"
@@ -61,17 +51,12 @@
             android:layout_marginLeft="2dip"
         />
 
->>>>>>> chat
         <EditText
             android:id="@+id/chatText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-<<<<<<< HEAD
-            android:layout_marginLeft="5dip"
-=======
             android:layout_marginLeft="2dip"
->>>>>>> chat
             android:layout_marginTop="2dip"
             android:layout_weight="1"
             android:hint="메시지 쓰기."

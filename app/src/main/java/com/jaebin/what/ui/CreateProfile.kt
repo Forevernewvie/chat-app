@@ -1,11 +1,5 @@
 package com.jaebin.what.ui
 
-<<<<<<< HEAD
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-=======
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
@@ -21,21 +15,16 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
->>>>>>> chat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-<<<<<<< HEAD
-import com.jaebin.what.KeyVariable
-=======
 import com.bumptech.glide.Glide
 import com.jaebin.what.Extension
 import com.jaebin.what.Extension.bitMapToString
 import com.jaebin.what.Extension.getSAF
 import com.jaebin.what.KeyVariable
 import com.jaebin.what.KeyVariable.sharedPreferencesImgKey
->>>>>>> chat
 import com.jaebin.what.KeyVariable.sharedPreferencesKey
 import com.jaebin.what.R
 import com.jaebin.what.preferenceUtil.SPF
@@ -55,15 +44,6 @@ class CreateProfile : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-<<<<<<< HEAD
-        binding.btnProfileOK.setOnClickListener {
-            val data = binding.messengerTextView.text.toString()
-            SPF.prefs.setString(sharedPreferencesKey,data)
-            it.findNavController().navigate(R.id.action_createProfile_to_fragment_home)
-        }
-    }
-
-=======
 
         binding.btnProfileOK.setOnClickListener {
             getNickName()
@@ -120,7 +100,6 @@ class CreateProfile : Fragment() {
             }
         }
 
->>>>>>> chat
 
 
 

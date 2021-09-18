@@ -2,11 +2,8 @@ package com.jaebin.what.ui
 
 import android.content.Intent
 import android.os.Bundle
-<<<<<<< HEAD
-=======
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
->>>>>>> chat
 import androidx.appcompat.app.AppCompatActivity
 import com.jaebin.what.activity.MainActivity
 import kotlinx.coroutines.CoroutineScope

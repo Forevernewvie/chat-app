@@ -1,7 +1,5 @@
 package com.jaebin.what
 
-<<<<<<< HEAD
-=======
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,7 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.jaebin.what.preferenceUtil.SPF
 import java.io.ByteArrayOutputStream
->>>>>>> chat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -38,8 +35,6 @@ object Extension {
         return randomString
     }
 
-<<<<<<< HEAD
-=======
     fun bitMapToString(bitmap: Bitmap): String {
 
         val byte = ByteArrayOutputStream().apply {
@@ -64,5 +59,4 @@ object Extension {
 
 
 
->>>>>>> chat
 }

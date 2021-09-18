@@ -16,9 +16,6 @@ class PreferenceUtil(context: Context) {
         prefs.edit().putString(key, str).apply()
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> chat
 }
 

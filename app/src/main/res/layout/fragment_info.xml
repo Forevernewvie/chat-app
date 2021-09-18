@@ -10,10 +10,6 @@
         android:layout_height="400dp"
         android:gravity="center"
         android:text="데모 버전 0.1v\n 개발자:최재빈\n기술스택\nFireBase, JetPack(다양하게)"
-<<<<<<< HEAD
-
-=======
->>>>>>> chat
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"

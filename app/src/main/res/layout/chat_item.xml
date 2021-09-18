@@ -16,10 +16,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-<<<<<<< HEAD
-            android:text="강동우"
-=======
->>>>>>> chat
             android:layout_margin="5dp"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -32,17 +28,10 @@
             android:layout_margin="5dp"
             android:maxLines="4"
             android:textColor="@color/black"
-<<<<<<< HEAD
-            android:text="대화내용"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-=======
             android:textSize="16sp"
             android:textStyle="bold" />
 
 
->>>>>>> chat
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

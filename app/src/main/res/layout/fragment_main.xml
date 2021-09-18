@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-
-    android:layout_height="match_parent">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-=======
 
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,7 +8,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
        >
->>>>>>> chat
 
         <TextView
             android:layout_width="300dp"
@@ -36,12 +16,7 @@
             android:textAlignment="center"
             android:text=" Talk"
             android:layout_gravity="center"
-<<<<<<< HEAD
-
-            android:layout_marginTop="50dp">
-=======
             android:layout_marginTop="60dp">
->>>>>>> chat
         </TextView>
 
 
@@ -50,11 +25,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-<<<<<<< HEAD
-            android:layout_marginTop="200dp"
-=======
             android:layout_marginTop="160dp"
->>>>>>> chat
             android:hint="E-mail"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -93,11 +64,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/Login"
-<<<<<<< HEAD
-            android:layout_marginTop="100dp"
-=======
             android:layout_marginTop="55dp"
->>>>>>> chat
             android:layout_width="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
@@ -117,14 +84,6 @@
 
         </com.google.android.material.button.MaterialButton>
 
-<<<<<<< HEAD
-
-
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googleSignUpBtn"
             android:layout_marginTop="10dp"
@@ -134,4 +93,3 @@
             />
 
 </LinearLayout>
->>>>>>> chat
