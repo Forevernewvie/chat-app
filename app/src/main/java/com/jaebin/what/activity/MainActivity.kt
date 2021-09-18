@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onSupportNavigateUp() = findNavController(com.jaebin.what.R.id.nav_controller).navigateUp()
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         mBinding=null
         auth.signOut()
         super.onDestroy()
