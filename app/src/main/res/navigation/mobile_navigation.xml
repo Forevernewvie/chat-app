@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.jaebin.what.ui.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_bottomViewActivity"
+            app:destination="@id/bottomViewActivity" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        tools:layout="@layout/fragment_signup"
+        android:name="com.jaebin.what.ui.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/bottomViewActivity"
+        android:name="com.jaebin.what.activity.BottomViewActivity"
+        android:label="activity_bottom_view"
+        tools:layout="@layout/activity_bottom_view" />
+
+</navigation>

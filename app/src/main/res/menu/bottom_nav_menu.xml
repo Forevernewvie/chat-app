@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/ic_home_black_24dp"
+
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/fragment_roomlist"
+        android:icon="@drawable/ic_baseline_chat_24"
+
+        android:title="채팅" />
+
+    <item
+        android:id="@+id/fragment_info"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="정보" />
+
+
+
+</menu>

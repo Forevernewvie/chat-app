@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "401331301255",
+    "project_id": "alert-synapse-317610",
+    "storage_bucket": "alert-synapse-317610.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401331301255:android:0eca621bec7bd322b58122",
+        "android_client_info": {
+          "package_name": "com.jaebin.what"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401331301255-eiurv58f208p2l10o2egnavag7588g30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaebin.what",
+            "certificate_hash": "65899f3dc1cf4e131893a65c8c762251dfac8ec8"
+          }
+        },
+        {
+          "client_id": "401331301255-ca0balfkfugcfudt1h5dm8piitidg0va.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmBFXDv_cSD4fs3af-J6HhT6SJskFy8Sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401331301255-ca0balfkfugcfudt1h5dm8piitidg0va.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

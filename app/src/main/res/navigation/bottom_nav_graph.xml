@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.jaebin.what.bottomView.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" >
+        <argument
+            android:name="nickName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fragment_home_to_createProfile"
+            app:destination="@id/createProfile" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/fragment_info"
+        android:name="com.jaebin.what.bottomView.InfoFragment"
+        tools:layout="@layout/fragment_info"
+<<<<<<< HEAD
+        android:label="InfoFragment" />
+=======
+        android:label="InfoFragment" >
+        <action
+            android:id="@+id/action_fragment_info_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+    </fragment>
+>>>>>>> chat
+    <fragment
+        android:id="@+id/createProfile"
+        tools:layout="@layout/fragment_create_profile"
+        android:name="com.jaebin.what.ui.CreateProfile"
+        android:label="createProfile" >
+        <action
+            android:id="@+id/action_createProfile_to_fragment_home"
+            app:destination="@id/fragment_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_roomlist"
+        android:name="com.jaebin.what.bottomView.ChatRoomListFragment"
+        tools:layout="@layout/fragment_roomlist"
+        android:label="ChatRoomListFragment" >
+        <action
+            android:id="@+id/action_chatRoomListFragment_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        tools:layout="@layout/fragment_chatroom"
+        android:name="com.jaebin.what.ui.ChatRoomFragment"
+        android:label="ChatRoomFragment" >
+    </fragment>
+<<<<<<< HEAD
+=======
+    <fragment
+        tools:layout="@layout/fragment_main"
+        android:id="@+id/mainFragment2"
+        android:name="com.jaebin.what.ui.MainFragment"
+        android:label="MainFragment" />
+>>>>>>> chat
+</navigation>
