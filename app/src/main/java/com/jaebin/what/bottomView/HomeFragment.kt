@@ -19,6 +19,7 @@ import com.jaebin.what.Extension.makeRandomString
 import com.jaebin.what.Extension.stringToBitMap
 import com.jaebin.what.FireBaseAPi.Authentication
 import com.jaebin.what.FireBaseAPi.Authentication.auth
+import com.jaebin.what.FireBaseAPi.Authentication.signUtil
 import com.jaebin.what.FireBaseAPi.ChatRoomDataBase
 import com.jaebin.what.FireBaseAPi.ChatRoomDataBase.chatRoomRef
 import com.jaebin.what.KeyVariable.sharedPreferencesImgKey
@@ -45,11 +46,8 @@ class HomeFragment :Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         setProfile()
 
@@ -101,13 +99,6 @@ class HomeFragment :Fragment() {
         builder.show()
 
     }
-
-    override fun onStop() {
-        super.onStop()
-        chatRoomListViewModel.clear()
-    }
-
-
 
 }
 

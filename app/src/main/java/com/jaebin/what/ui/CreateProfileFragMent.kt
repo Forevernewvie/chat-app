@@ -30,7 +30,7 @@ import com.jaebin.what.R
 import com.jaebin.what.preferenceUtil.SPF
 import com.jaebin.what.databinding.FragmentCreateProfileBinding
 
-class CreateProfile : Fragment() {
+class CreateProfileFragMent : Fragment() {
     private lateinit var binding :FragmentCreateProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -21,7 +21,6 @@ class ChatContentAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         val imgView = ChatImgItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
 
         return when(viewType){
-
             MSG->MsgItemViewHolder(msgView)
             IMAGE->ImageItemViewHolder(imgView)
             else-> throw RuntimeException()

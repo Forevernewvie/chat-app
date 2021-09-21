@@ -47,10 +47,11 @@ class ChatRoomListFragment : Fragment() {
 
 
     private fun getChatRoomInfo(){
+        chatRoomListViewModel.clear()
         chatRoomRef.addChildEventListener(object : ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 for (data in snapshot.children) {
-                    val testItem = data.getValue(ChatRoomModel::class.java)!!
+                    var testItem = data.getValue(ChatRoomModel::class.java)!!
                     chatRoomListViewModel.addItem(testItem)
                 }
             }
@@ -83,8 +84,6 @@ class ChatRoomListFragment : Fragment() {
     private fun initViewModel(){
         chatRoomListViewModel = ViewModelProvider(requireActivity()).get(ChatRoomListViewModel::class.java)
     }
-
-
 
 }
 

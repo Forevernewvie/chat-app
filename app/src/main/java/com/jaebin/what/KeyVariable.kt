@@ -5,4 +5,5 @@ object KeyVariable {
     const val sharedPreferencesKey = "nick"
     const val sharedPreferencesImgKey = "profile"
     const val RC_SIGN_IN = 9001
+    const val ref = "chatRoomContent"
 }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_bottomViewActivity"
             app:destination="@id/bottomViewActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_findPassWordFragment"
+            app:destination="@id/findPassWordFragment" />
 
     </fragment>
     <fragment
@@ -32,5 +35,14 @@
         android:name="com.jaebin.what.activity.BottomViewActivity"
         android:label="activity_bottom_view"
         tools:layout="@layout/activity_bottom_view" />
+    <fragment
+        android:id="@+id/findPassWordFragment"
+        android:name="com.jaebin.what.ui.FindPassWordFragment"
+        android:label="fragment_find_pass_word"
+        tools:layout="@layout/fragment_find_pass_word" >
+        <action
+            android:id="@+id/action_findPassWordFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>

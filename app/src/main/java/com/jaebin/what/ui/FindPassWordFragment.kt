@@ -1,19 +1,17 @@
 package com.jaebin.what.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
-import com.jaebin.what.FireBaseAPi.Authentication.auth
-import com.jaebin.what.R
-import com.jaebin.what.databinding.FragmentChatroomBinding
-import com.jaebin.what.databinding.FragmentCreateProfileBinding
+import androidx.fragment.app.Fragment
+import com.jaebin.what.FireBaseAPi.Authentication.signUtil
 import com.jaebin.what.databinding.FragmentFindPassWordBinding
 
-class FindPassWord : Fragment() {
+
+
+class FindPassWordFragment : Fragment() {
     private lateinit var binding: FragmentFindPassWordBinding
 
     override fun onCreateView(
@@ -27,25 +25,21 @@ class FindPassWord : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.confirmBtn.setOnClickListener {
-            val email = binding.emailText.toString()
-            resetPassword(email,it)
+            val email = binding.emailText.text.toString()
 
-        }
-
-    }
-    private fun resetPassword(email:String,view:View){
-        auth.sendPasswordResetEmail(email).addOnCompleteListener {
-            if(it.isSuccessful){
-                Toast.makeText(context,"비밀번호 변경 이메일 전송 완료",Toast.LENGTH_SHORT).show()
-                view.findNavController().navigate(R.id.action_findPassWord_to_mainFragment)
+            if(signUtil.validateEmail(email)){
+                signUtil.resetPassword(email,it,requireContext())
             }
             else{
-                Toast.makeText(context,"이메일 재입력",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),"양식에 맞지 않는 이메일",Toast.LENGTH_SHORT).show()
             }
+
         }
 
     }
+
+
+
 
 }

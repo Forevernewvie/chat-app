@@ -16,4 +16,6 @@ class BottomViewActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host)
         binding.bottomView.setupWithNavController(navController)
     }
+
+
 }

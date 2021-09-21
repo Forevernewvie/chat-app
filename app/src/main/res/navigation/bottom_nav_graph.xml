@@ -26,13 +26,13 @@
         tools:layout="@layout/fragment_info"
         android:label="InfoFragment" >
         <action
-            android:id="@+id/action_fragment_info_to_mainFragment2"
-            app:destination="@id/mainFragment2" />
+            android:id="@+id/action_fragment_info_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/createProfile"
         tools:layout="@layout/fragment_create_profile"
-        android:name="com.jaebin.what.ui.CreateProfile"
+        android:name="com.jaebin.what.ui.CreateProfileFragMent"
         android:label="createProfile" >
         <action
             android:id="@+id/action_createProfile_to_fragment_home"
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         tools:layout="@layout/fragment_main"
-        android:id="@+id/mainFragment2"
+        android:id="@+id/mainFragment"
         android:name="com.jaebin.what.ui.MainFragment"
         android:label="MainFragment" />
 </navigation>

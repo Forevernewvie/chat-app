@@ -21,6 +21,7 @@ import com.jaebin.what.FireBaseAPi.Authentication.auth
 import com.jaebin.what.FireBaseAPi.Authentication.signUtil
 import com.jaebin.what.KeyVariable.RC_SIGN_IN
 import com.jaebin.what.R
+import com.jaebin.what.bottomView.HomeFragment
 import com.jaebin.what.databinding.FragmentMainBinding
 
 
@@ -29,7 +30,7 @@ class MainFragment: Fragment() {
     private var mBinding: FragmentMainBinding? = null
     private val binding get() = mBinding!!
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var navController: NavController
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,16 +39,18 @@ class MainFragment: Fragment() {
         mBinding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
-
+    /*
     override fun onStart() {
         super.onStart()
-        signUtil.checkLogin(auth.currentUser,this)
-    }
+        signUtil.checkLogin(this)
+    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        binding.findPwd.setOnClickListener {
+            it.findNavController().navigate(R.id.action_mainFragment_to_findPassWordFragment)
+        }
 
         binding.signUpBtn.setOnClickListener {
             it.findNavController().navigate(R.id.action_mainFragment_to_signUpFragment)
@@ -56,7 +59,7 @@ class MainFragment: Fragment() {
         binding.Login.setOnClickListener {
             val email = binding.emailText.text.toString()
             val pwd = binding.pwdText.text.toString()
-            context?.let { it1 -> signUtil.singUpBasic(email, pwd, it1, this) }
+            signUtil.singUpBasic(email,pwd,requireContext(),this)
         }
 
         binding.googleSignUpBtn.setOnClickListener {

@@ -80,7 +80,7 @@ class ChatRoomFragment : Fragment() {
             chatContentAdapter.setData(it)
         })
 
-        CoroutineScope(Dispatchers.IO).launch {  getChatContent() }
+       getChatContent()
 
 
     }
@@ -101,7 +101,7 @@ class ChatRoomFragment : Fragment() {
 
 
     private fun getChatContent(){
-
+        chatRoomViewModel.clear()
         chatDataRef.addChildEventListener(object :ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 snapshot.getValue(Msg::class.java)?.let { chatRoomViewModel.addItem(it) }
@@ -130,7 +130,7 @@ class ChatRoomFragment : Fragment() {
         val roomListPos= arguments?.getInt(posKey)!!
         roomName = chatRoomListViewModel.roomList.value?.get(roomListPos)?.roomNm.toString()
         val headCount = chatRoomListViewModel.roomList.value?.get(roomListPos)?.num.toString()
-        chatDataRef = database.getReference(roomName+"chatContent")
+        chatDataRef = database.getReference(roomName)
         binding.topAppBar.title = String.format("$roomName ($headCount)")
     }
 
@@ -146,14 +146,6 @@ class ChatRoomFragment : Fragment() {
         chatRoomListViewModel = ViewModelProvider(requireActivity()).get(ChatRoomListViewModel::class.java)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        chatRoomViewModel.clear()
-    }
-    override fun onStop() {
-        super.onStop()
-        chatRoomListViewModel.clear()
-    }
 
     private val img: ActivityResultLauncher<Intent> =
 

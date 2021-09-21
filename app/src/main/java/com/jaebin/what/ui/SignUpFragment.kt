@@ -37,7 +37,15 @@ class SignUpFragment: Fragment() {
         binding.sumbit.setOnClickListener {
             val email = binding.SignUpEmailText.text.toString()
             val pwd = binding.signUpPwdText.text.toString()
-            context?.let { it1 -> signUtil.signInBasic(email,pwd, it1,this) }
+
+            if(signUtil.validateEmail(email)){
+                signUtil.signInBasic(email,pwd,requireContext(),this)
+            }
+            else{
+                Toast.makeText(requireContext(),"양식에 맞지 않는 이메일",Toast.LENGTH_SHORT).show()
+            }
+
+
         }
     }
 
