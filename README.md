@@ -1,11 +1,14 @@
-# chatApp
-파이어베이스를 활용한 채팅앱
+# JAEBIN TAlK
 
+*파이어베이스를 연습해보기 위해 만들어본 채팅 어플리케이*션
 
-- 진행중 <br>
- 프로필 이미지 + 채팅시 text말고 img도 가능하게 <br>
- 방 추가할때 왜 표시는 하나씩 더 되고 새로 들어가면 원래 갯수대로 나오는지 확인  <br>
- 채팅방 불러오는 속도 어떻게 빠르게 할지 <br>
- 로그인시 구글 페북 계정 연동 하기 비밀번호 까먹었을때 보내주는 기능 추가 하기
- 
+메인화면
 
+![main.PNG](JAEBIN%20TAlK%2007480cf0ddd04b01a0ddf738ecd92c66/main.png)
+
+시연 영상 <
+[https://youtu.be/1CJQhSnvPH8](https://youtu.be/1CJQhSnvPH8)
+
+[https://youtu.be/gpF6pc_YlbU](https://youtu.be/gpF6pc_YlbU)
+
+[https://youtu.be/N_jcwdcQKsQ](https://youtu.be/N_jcwdcQKsQ)
