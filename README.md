@@ -7,7 +7,7 @@
 ![main](https://user-images.githubusercontent.com/53516129/135251866-a8843fd2-9fd6-45de-b535-bc06cdef4a7b.PNG)
 
 
-시연 영상 <
+시연 영상 <br>
 [https://youtu.be/1CJQhSnvPH8](https://youtu.be/1CJQhSnvPH8)
 
 [https://youtu.be/gpF6pc_YlbU](https://youtu.be/gpF6pc_YlbU)
