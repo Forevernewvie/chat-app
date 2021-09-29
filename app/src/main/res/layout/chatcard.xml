@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="15dp"
-    android:layout_marginEnd="15dp"
-    android:layout_marginTop="25dp"
-    android:id="@+id/card_view"
-    app:cardBackgroundColor="#FDF9F9"
-    cardCornerRadius="7dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+        <variable
+            name="model"
+            type="com.jaebin.what.model.ChatRoomModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="25dp"
+        android:id="@+id/card_view"
+        app:cardBackgroundColor="#FDF9F9"
+        cardCornerRadius="7dp">
 
-        <TextView
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:layout_margin="12dp"
-            android:id="@+id/room_name"
-            android:maxLength="15"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            />
-    
-        <TextView
-            android:id="@+id/users_num"
-            android:textSize="16sp"
-            android:layout_margin="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            />
-        <TextClock
-            android:id="@+id/time_stamp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:format12Hour="MM-dd hh:mm a"
-            android:textSize="16sp"
-            android:timeZone="Asia/Seoul" />
-        <ImageButton
-            android:id="@+id/deleteBtn"
-            android:backgroundTint="#FDF9F9"
-            android:src="@drawable/ic_baseline_delete_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-           />
+            <TextView
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_margin="12dp"
+                android:id="@+id/room_name"
+                android:maxLength="15"
+                android:text="@{model.roomNm}"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/users_num"
+                android:textSize="16sp"
+                android:layout_margin="12dp"
+                android:text="@{model.num}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-</androidx.cardview.widget.CardView>
+                />
+
+            <TextClock
+                android:id="@+id/time_stamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:format12Hour="MM-dd hh:mm a"
+                android:textSize="16sp"
+                android:timeZone="Asia/Seoul" />
+
+            <ImageButton
+                android:id="@+id/deleteBtn"
+                android:backgroundTint="#FDF9F9"
+                android:src="@drawable/ic_baseline_delete_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

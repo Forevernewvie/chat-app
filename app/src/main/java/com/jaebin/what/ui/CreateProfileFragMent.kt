@@ -15,49 +15,45 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.jaebin.what.Extension
-import com.jaebin.what.Extension.bitMapToString
-import com.jaebin.what.Extension.getSAF
-import com.jaebin.what.KeyVariable
-import com.jaebin.what.KeyVariable.sharedPreferencesImgKey
-import com.jaebin.what.KeyVariable.sharedPreferencesKey
+import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_IMG_KEY
+import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
 import com.jaebin.what.R
 import com.jaebin.what.preferenceUtil.SPF
 import com.jaebin.what.databinding.FragmentCreateProfileBinding
+import com.jaebin.what.utils.Utils.intentUtils
+import com.jaebin.what.utils.Utils.bitMapUtil
 
 class CreateProfileFragMent : Fragment() {
-    private lateinit var binding :FragmentCreateProfileBinding
+    private lateinit var careProfileBinding :FragmentCreateProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCreateProfileBinding.inflate(inflater,container,false)
-        return binding.root
+        careProfileBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_create_profile,container,false)
+        return careProfileBinding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnProfileOK.setOnClickListener {
+        careProfileBinding.btnProfileOK.setOnClickListener {
             getNickName()
             it.findNavController().navigate(R.id.action_createProfile_to_fragment_home)
         }
 
-        binding.profileImg.setOnClickListener {
-            filterActivityLauncher.launch( getSAF())
+        careProfileBinding.profileImg.setOnClickListener {
+            filterActivityLauncher.launch(intentUtils.getSAF())
         }
     }
 
     private fun getNickName(){
-        val data = binding.messengerTextView.text.toString()
-        SPF.prefs.setString(sharedPreferencesKey,data)
+        val data = careProfileBinding.messengerTextView.text.toString()
+        SPF.prefs.setString(SHAREDPREFERENCES_KEY,data)
     }
 
 
@@ -76,16 +72,16 @@ class CreateProfileFragMent : Fragment() {
                                 context.contentResolver,
                                 currentImageUri
                             )
-                            binding.profileImg.setImageBitmap(tempBitmap)
-                            binding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
-                            SPF.prefs.setString(sharedPreferencesImgKey,bitMapToString(tempBitmap))
+                            careProfileBinding.profileImg.setImageBitmap(tempBitmap)
+                            careProfileBinding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
+                            SPF.prefs.setString(SHAREDPREFERENCES_IMG_KEY, bitMapUtil.bitMapToString(tempBitmap))
                         }
                         else {
                             val source = ImageDecoder.createSource(context.contentResolver, currentImageUri)
                             tempBitmap = ImageDecoder.decodeBitmap(source)
-                            binding.profileImg.setImageBitmap(tempBitmap)
-                            binding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
-                            SPF.prefs.setString(sharedPreferencesImgKey,bitMapToString(tempBitmap))
+                            careProfileBinding.profileImg.setImageBitmap(tempBitmap)
+                            careProfileBinding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
+                            SPF.prefs.setString(SHAREDPREFERENCES_IMG_KEY,bitMapUtil.bitMapToString(tempBitmap))
                         }
                     }
 

@@ -14,38 +14,35 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.jaebin.what.Extension.bitMapToString
-import com.jaebin.what.Extension.getSAF
 import com.jaebin.what.Extension.longtoDateTime
-import com.jaebin.what.FireBaseAPi.Authentication.auth
-import com.jaebin.what.FireBaseAPi.ChatDataBase.chatDataRef
-import com.jaebin.what.FireBaseAPi.ChatDataBase.database
-import com.jaebin.what.FireBaseAPi.ChatRoomDataBase.chatRoomRef
-import com.jaebin.what.KeyVariable
-import com.jaebin.what.KeyVariable.posKey
+import com.jaebin.what.fireBaseAPi.Authentication.auth
+import com.jaebin.what.fireBaseAPi.ChatDataBase.chatDataRef
+import com.jaebin.what.fireBaseAPi.ChatDataBase.database
+import com.jaebin.what.ConstantsVal.POS_KEY
+import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
+import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentChatroomBinding
 import com.jaebin.what.model.Msg
 import com.jaebin.what.preferenceUtil.SPF
 import com.jaebin.what.recyclerView.ChatContentAdapter
-import com.jaebin.what.recyclerView.ChatRoomDataAdapter
 import com.jaebin.what.recyclerView.IMAGE
 import com.jaebin.what.recyclerView.MSG
+import com.jaebin.what.utils.Utils.bitMapUtil
+import com.jaebin.what.utils.Utils.intentUtils
 import com.jaebin.what.viewModel.ChatRoomListViewModel
 import com.jaebin.what.viewModel.ChatRoomViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import java.util.*
+
 
 class ChatRoomFragment : Fragment() {
     private lateinit var roomName:String
-    private lateinit var binding: FragmentChatroomBinding
+    private lateinit var chatRoomBinding: FragmentChatroomBinding
     private lateinit var chatRoomListViewModel: ChatRoomListViewModel
     private lateinit var chatContentAdapter:ChatContentAdapter
     private lateinit var chatRoomViewModel: ChatRoomViewModel
@@ -56,8 +53,9 @@ class ChatRoomFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentChatroomBinding.inflate(inflater,container,false)
-        return binding.root
+        chatRoomBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_chatroom,container,false)
+        chatRoomBinding.lifecycleOwner=this.viewLifecycleOwner
+        return chatRoomBinding.root
     }
 
 
@@ -68,11 +66,11 @@ class ChatRoomFragment : Fragment() {
         initViewModel()
         setTitleChatRoom()
 
-        binding.sendButton.setOnClickListener {
+        chatRoomBinding.sendButton.setOnClickListener {
             setChatContent()
         }
 
-        binding.imgContent.setOnClickListener {
+        chatRoomBinding.imgContent.setOnClickListener {
             uploadImg()
         }
 
@@ -86,17 +84,17 @@ class ChatRoomFragment : Fragment() {
     }
 
     private fun uploadImg(){
-        img.launch( getSAF())
+        img.launch( intentUtils.getSAF())
     }
 
     private fun setChatContent(){
         val timeStamp = System.currentTimeMillis().longtoDateTime()
-        val nickName = SPF.prefs.getString(KeyVariable.sharedPreferencesKey,"")
+        val nickName = SPF.prefs.getString(SHAREDPREFERENCES_KEY,"")
         val uID = auth.uid.toString()
-        val chatContent = binding.chatText.text.toString()
+        val chatContent = chatRoomBinding.chatText.text.toString()
         val msgData = Msg(MSG,nickName,chatContent,timeStamp,uID)
         chatDataRef.push().setValue(msgData)
-        binding.chatText.setText("")
+        chatRoomBinding.chatText.setText("")
     }
 
 
@@ -127,18 +125,19 @@ class ChatRoomFragment : Fragment() {
 
 
     private fun setTitleChatRoom(){
-        val roomListPos= arguments?.getInt(posKey)!!
+        val roomListPos= arguments?.getInt(POS_KEY)!!
         roomName = chatRoomListViewModel.roomList.value?.get(roomListPos)?.roomNm.toString()
         val headCount = chatRoomListViewModel.roomList.value?.get(roomListPos)?.num.toString()
         chatDataRef = database.getReference(roomName)
-        binding.topAppBar.title = String.format("$roomName ($headCount)")
+        chatRoomBinding.topAppBar.title = String.format("$roomName ($headCount)")
     }
 
     private fun initRecyclerView(){
         chatContentAdapter = ChatContentAdapter()
-        binding.chatRoomRecycle.layoutManager = LinearLayoutManager(context)
-        binding.chatRoomRecycle.adapter = chatContentAdapter
-        binding.chatRoomRecycle.setHasFixedSize(true)
+        chatRoomBinding.chatRoomRecycle.layoutManager = LinearLayoutManager(context)
+        chatRoomBinding.chatRoomRecycle.adapter = chatContentAdapter
+        chatRoomBinding.chatRoomRecycle.scrollToPosition(chatContentAdapter.itemCount-1)
+        chatRoomBinding.chatRoomRecycle.setHasFixedSize(true)
     }
 
     private fun initViewModel(){
@@ -165,11 +164,12 @@ class ChatRoomFragment : Fragment() {
 
                         } else {
                             val timeStamp = System.currentTimeMillis().longtoDateTime()
-                            val nickName = SPF.prefs.getString(KeyVariable.sharedPreferencesKey,"")
+                            val nickName = SPF.prefs.getString(SHAREDPREFERENCES_KEY,"")
                             val uID = auth.uid.toString()
                             val source = ImageDecoder.createSource(context.contentResolver, currentImageUri)
                             bitmap = ImageDecoder.decodeBitmap(source)
-                            chatDataRef.push().setValue(Msg(viewType = IMAGE,name=nickName,time=timeStamp,uid = uID,img = bitMapToString(bitmap!!)))
+                            chatDataRef.push().setValue(Msg(viewType = IMAGE,name=nickName,time=timeStamp,uid = uID,
+                                img = bitMapUtil.bitMapToString(bitmap!!)))
                         }
                     }
 

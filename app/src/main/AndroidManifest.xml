@@ -27,7 +27,9 @@
 
 
 
-
+        <activity
+            android:name=".activity.CreateRoomDialog"
+            ></activity>
         <activity
             android:name=".activity.MainActivity"
             ></activity>

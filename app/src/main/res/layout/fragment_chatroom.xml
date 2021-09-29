@@ -1,80 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/chatRoomLayout"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffffff">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:backgroundTint="#5B90BA"
-            android:layout_gravity="center_horizontal"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-             />
+    </data>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chatRoom_recycle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="10dp"
-      />
     <LinearLayout
-        android:id="@+id/sendMsgLayout"
-        android:orientation="horizontal"
-        android:backgroundTint="#8DFFFFFF"
+        android:id="@+id/chatRoomLayout"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/write_chat_view"
-        >
+        android:layout_height="fill_parent"
+        android:background="#ffffff">
 
-        <ImageView
-            android:id="@+id/imgContent"
-            android:layout_width="wrap_content"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_baseline_image_45"
-            android:layout_marginLeft="2dip"
-        />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/chatText"
-            android:layout_width="wrap_content"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:backgroundTint="#5B90BA"
+                android:layout_gravity="center_horizontal"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatRoom_recycle"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
             android:layout_weight="1"
-            android:hint="메시지 쓰기."
-            android:background="#8DFFFFFF"
-            />
-        <ImageView
-            android:id="@+id/send_Button"
-            android:layout_width="wrap_content"
+            android:layout_margin="10dp" />
+
+        <LinearLayout
+            android:id="@+id/sendMsgLayout"
+            android:orientation="horizontal"
+            android:backgroundTint="#8DFFFFFF"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dip"
-            android:layout_marginTop="2dip"
-            android:layout_marginRight="5dip"
-            android:src="@drawable/send"
-            android:clickable="true"
-            android:maxWidth="45dp"
-            android:maxHeight="45dp"
-            android:adjustViewBounds="true"
-            />
+            android:background="@drawable/write_chat_view">
+
+            <ImageView
+                android:id="@+id/imgContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_baseline_image_45"
+                android:layout_marginLeft="2dip" />
+
+            <EditText
+                android:id="@+id/chatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="2dip"
+                android:layout_marginTop="2dip"
+                android:layout_weight="1"
+                android:hint="메시지 쓰기."
+                android:background="#8DFFFFFF" />
+
+            <ImageView
+                android:id="@+id/send_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="2dip"
+                android:layout_marginRight="5dip"
+                android:src="@drawable/send"
+                android:clickable="true"
+                android:maxWidth="45dp"
+                android:maxHeight="45dp"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</layout>

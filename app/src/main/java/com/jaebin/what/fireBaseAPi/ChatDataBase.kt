@@ -1,4 +1,4 @@
-package com.jaebin.what.FireBaseAPi
+package com.jaebin.what.fireBaseAPi
 
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

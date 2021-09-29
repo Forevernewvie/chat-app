@@ -2,7 +2,7 @@ package com.jaebin.what.recyclerView
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.jaebin.what.FireBaseAPi.Authentication
+import com.jaebin.what.fireBaseAPi.Authentication
 import com.jaebin.what.databinding.ChatItemBinding
 import com.jaebin.what.model.Msg
 
@@ -10,9 +10,8 @@ class MsgItemViewHolder(val  msgItem: ChatItemBinding) : RecyclerView.ViewHolder
 
 
     fun bind(data: Msg){
-        msgItem.timeStamp.text = data.time
-        msgItem.nickName.text = data.name
-        msgItem.chatContent.text = data.msg
+
+        msgItem.msg = data
 
         if(data.uid == Authentication.auth.uid){
             msgItem.chatContent.textAlignment = View.TEXT_ALIGNMENT_TEXT_END

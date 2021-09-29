@@ -7,7 +7,6 @@ import com.jaebin.what.model.ChatRoomModel
 class ChatRoomListViewModel :ViewModel() {
 
     val roomList = MutableLiveData<ArrayList<ChatRoomModel>>()
-
     private var items = ArrayList<ChatRoomModel>()
 
     init {
@@ -18,6 +17,13 @@ class ChatRoomListViewModel :ViewModel() {
         items.add(roomInfo)
         roomList.value = items
     }
+
+    fun deleteItem(pos:Int){
+        items.removeAt(pos)
+        roomList.value = items
+    }
+
+
 
     fun clear(){
         items.clear()

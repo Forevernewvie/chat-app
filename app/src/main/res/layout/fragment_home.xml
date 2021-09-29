@@ -1,78 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="JaeBin Talk"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        />
+    <data>
 
-    <ImageView
-        android:id="@+id/homeProfile_Img"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
-        android:layout_marginTop="47dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/img_view_shape"
-        app:layout_constraintBottom_toTopOf="@+id/messengerTextView"
-         />
+    </data>
 
-    <TextView
-        android:id="@+id/messengerTextView"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:textAlignment="center"
-        android:layout_marginTop="40dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="JaeBin Talk"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_setProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="11dp"
-        android:backgroundTint="@color/white"
-        android:text="설정"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="22dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/plusRoomBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/messengerTextView" />
+        <ImageView
+            android:id="@+id/homeProfile_Img"
+            android:layout_width="260dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="47dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/img_view_shape"
+            app:layout_constraintBottom_toTopOf="@+id/messengerTextView" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/plusRoomBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="21dp"
-        android:backgroundTint="@color/white"
-        android:layout_gravity="center|right"
-        android:contentDescription="@string/common_google_play_services_enable_button"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
+        <TextView
+            android:id="@+id/messengerTextView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:textAlignment="center"
+            android:layout_marginTop="40dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_setProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:backgroundTint="@color/white"
+            android:text="설정"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="22dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/plusRoomBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/messengerTextView" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/plusRoomBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="21dp"
+            android:backgroundTint="@color/white"
+            android:layout_gravity="center|right"
+            android:contentDescription="@string/common_google_play_services_enable_button"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_baseline_add_24" />
+
+
+    </LinearLayout>
+</layout>

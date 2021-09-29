@@ -1,13 +1,11 @@
 package com.jaebin.what.recyclerView
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jaebin.what.Extension.stringToBitMap
-import com.jaebin.what.FireBaseAPi.Authentication.auth
 import com.jaebin.what.databinding.ChatImgItemBinding
 import com.jaebin.what.databinding.ChatItemBinding
+import com.jaebin.what.databinding.ChatcardBinding
 import com.jaebin.what.model.Msg
 import java.lang.RuntimeException
 
@@ -16,9 +14,13 @@ class ChatContentAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var chatData = mutableListOf<Msg>()
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val msgView = ChatItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        val imgView = ChatImgItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+
+        val inflater = LayoutInflater.from(parent.context)
+        val msgView = ChatItemBinding.inflate(inflater,parent,false)
+        val imgView = ChatImgItemBinding.inflate(inflater,parent,false)
 
         return when(viewType){
             MSG->MsgItemViewHolder(msgView)

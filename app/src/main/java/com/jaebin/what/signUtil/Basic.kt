@@ -1,16 +1,14 @@
 package com.jaebin.what.signUtil
 
 import android.content.Context
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseUser
-import com.jaebin.what.FireBaseAPi.Authentication
-import com.jaebin.what.FireBaseAPi.Authentication.auth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.jaebin.what.fireBaseAPi.Authentication.auth
 import com.jaebin.what.R
 import com.jaebin.what.ui.MainFragment
 import com.jaebin.what.ui.SignUpFragment
@@ -88,6 +86,8 @@ class Basic {
     fun validateEmail(email:String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
+
 
 
 
