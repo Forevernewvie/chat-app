@@ -4,7 +4,8 @@
 
 메인화면
 
-![main.PNG](JAEBIN%20TAlK%2007480cf0ddd04b01a0ddf738ecd92c66/main.png)
+![main](https://user-images.githubusercontent.com/53516129/135251866-a8843fd2-9fd6-45de-b535-bc06cdef4a7b.PNG)
+
 
 시연 영상 <
 [https://youtu.be/1CJQhSnvPH8](https://youtu.be/1CJQhSnvPH8)
