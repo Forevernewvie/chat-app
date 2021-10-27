@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -19,7 +18,6 @@ import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
 import com.jaebin.what.fireBaseAPi.Authentication.auth
 import com.jaebin.what.fireBaseAPi.ChatRoomDataBase.chatRoomRef
 import com.jaebin.what.R
-import com.jaebin.what.activity.CreateRoomDialog
 import com.jaebin.what.databinding.DialogBinding
 import com.jaebin.what.preferenceUtil.SPF
 import com.jaebin.what.databinding.FragmentHomeBinding
@@ -44,7 +42,7 @@ class HomeFragment :Fragment() {
         setProfile()
 
         homeBinding.plusRoomBtn.setOnClickListener {
-            CreateRoomDialog().dialogBuilder()
+            context?.let { it -> roomInfoDialog(it) }
         }
 
         homeBinding.btnSetProfile.setOnClickListener {
@@ -68,6 +66,29 @@ class HomeFragment :Fragment() {
         }
 
     }
+
+    private fun roomInfoDialog(context: Context) {
+        var builder = android.app.AlertDialog.Builder(context)
+        builder.setTitle("채팅방 설정")
+        var dialogBinding= DialogBinding.inflate(LayoutInflater.from(context))
+        builder.setView(dialogBinding.root)
+
+        val randomString = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+
+        val listener = DialogInterface.OnClickListener { _, _ ->
+            val chatRoomInfoData = ChatRoomModel(dialogBinding.roomNm.text.toString(),dialogBinding.capacity.text.toString(),
+                auth.uid, randomString.makeRandomString())
+            chatRoomRef.child(dialogBinding.roomNm.text.toString()).push().setValue(chatRoomInfoData)
+
+        }
+
+        builder.setPositiveButton("확인", listener)
+        builder.setNegativeButton("취소", null)
+        builder.show()
+
+    }
+
+
 
 
 }
