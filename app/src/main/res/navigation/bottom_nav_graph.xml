@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragment_home"
-        android:name="com.jaebin.what.bottomView.HomeFragment"
+        android:name="com.jaebin.what.bottomview.HomeFragment"
         tools:layout="@layout/fragment_home"
         android:label="HomeFragment" >
         <argument
@@ -22,17 +22,13 @@
 
     <fragment
         android:id="@+id/fragment_info"
-        android:name="com.jaebin.what.bottomView.InfoFragment"
+        android:name="com.jaebin.what.ui.bottomview.InfoFragment"
         tools:layout="@layout/fragment_info"
-        android:label="InfoFragment" >
-        <action
-            android:id="@+id/action_fragment_info_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
+        android:label="InfoFragment" />
     <fragment
         android:id="@+id/createProfile"
         tools:layout="@layout/fragment_create_profile"
-        android:name="com.jaebin.what.ui.CreateProfileFragMent"
+        android:name="com.jaebin.what.ui.fragment.CreateProfileFragment"
         android:label="createProfile" >
         <action
             android:id="@+id/action_createProfile_to_fragment_home"
@@ -40,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_roomlist"
-        android:name="com.jaebin.what.bottomView.ChatRoomListFragment"
+        android:name="com.jaebin.what.ui.bottomview.ChatRoomListFragment"
         tools:layout="@layout/fragment_roomlist"
         android:label="ChatRoomListFragment" >
         <action
@@ -50,12 +46,12 @@
     <fragment
         android:id="@+id/chatRoomFragment"
         tools:layout="@layout/fragment_chatroom"
-        android:name="com.jaebin.what.ui.ChatRoomFragment"
+        android:name="com.jaebin.what.ui.fragment.ChatRoomFragment"
         android:label="ChatRoomFragment" >
     </fragment>
     <fragment
         tools:layout="@layout/fragment_main"
         android:id="@+id/mainFragment"
-        android:name="com.jaebin.what.ui.MainFragment"
+        android:name="com.jaebin.what.ui.fragment.MainFragment"
         android:label="MainFragment" />
 </navigation>

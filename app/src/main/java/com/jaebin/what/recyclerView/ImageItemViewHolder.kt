@@ -3,7 +3,7 @@ package com.jaebin.what.recyclerView
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.jaebin.what.fireBaseAPi.Authentication
+import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.databinding.ChatImgItemBinding
 import com.jaebin.what.model.Msg
 

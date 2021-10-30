@@ -57,12 +57,16 @@ class ChatContentAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return chatData.size
     }
 
-
-
     fun setData(data : ArrayList<Msg>){
         chatData = data
         notifyDataSetChanged()
     }
+
+    companion object{
+        const val MSG = 1
+        const val IMAGE = 2
+    }
+
 
 
 }

@@ -6,6 +6,7 @@ import android.util.Base64
 import java.io.ByteArrayOutputStream
 
 class BitmapUtil {
+
     fun bitMapToString(bitmap: Bitmap): String {
 
         val byte = ByteArrayOutputStream().apply {

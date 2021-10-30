@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="msg"
+            type="com.jaebin.what.viewmodel.ChatRoomViewModel" />
+        <variable
+            name="chatRoomListVM"
+            type="com.jaebin.what.viewmodel.ChatRoomListViewModel" />
     </data>
 
     <LinearLayout
@@ -26,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:backgroundTint="#5B90BA"
+                app:title="@{msg.titleBar}"
                 android:layout_gravity="center_horizontal"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
@@ -61,6 +67,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="2dip"
                 android:layout_marginTop="2dip"
+                android:text="@={msg.chatContent}"
                 android:layout_weight="1"
                 android:hint="메시지 쓰기."
                 android:background="#8DFFFFFF" />

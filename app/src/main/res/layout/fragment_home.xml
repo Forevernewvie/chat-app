@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="homeViewModel"
+            type="com.jaebin.what.viewmodel.HomeViewModel" />
+
 
     </data>
 
@@ -13,10 +17,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/title"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="JaeBin Talk"
+            android:text="@{homeViewModel.titleData}"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:textAlignment="center"
@@ -24,10 +28,12 @@
             android:textStyle="bold" />
 
         <ImageView
+
             android:id="@+id/homeProfile_Img"
             android:layout_width="260dp"
             android:layout_height="260dp"
             android:layout_marginTop="47dp"
+            app:profileImgSrc="@{homeViewModel.profileImg}"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/img_view_shape"
             app:layout_constraintBottom_toTopOf="@+id/messengerTextView" />
@@ -41,6 +47,7 @@
             android:layout_marginTop="40dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="20sp"
+            android:text= "@={homeViewModel.nickName}"
             android:layout_gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
