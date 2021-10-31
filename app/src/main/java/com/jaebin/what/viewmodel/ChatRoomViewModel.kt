@@ -22,19 +22,25 @@ import org.koin.java.KoinJavaComponent.inject
 class ChatRoomViewModel() : ViewModel(),KoinComponent {
 
     private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
+
     val chatContentData = MutableLiveData<ArrayList<Msg>>()
+    private val items = ArrayList<Msg>()
 
-    var chatContent = MutableLiveData<String>()
-    var titleBar = MutableLiveData<String>()
+    private val _chatContent = MutableLiveData<String>()
+    val chatContent:LiveData<String>
+        get() = _chatContent
 
-    private var items = ArrayList<Msg>()
+    private val _titleBar = MutableLiveData<String>()
+    val titleBar : LiveData<String>
+        get() = _titleBar
+
     init {
-        chatContentData.value=items
+        chatContentData.postValue(items)
     }
 
     fun addItem(roomInfo:Msg){
         items.add(roomInfo)
-        chatContentData.value = items
+        chatContentData.postValue(items)
     }
     fun clear(){
         items.clear()
@@ -43,7 +49,7 @@ class ChatRoomViewModel() : ViewModel(),KoinComponent {
 
     fun setTitleChatRoom(roomName:String,headCount:String){
         ChatDataBase.chatDataRef = ChatDataBase.database.getReference(roomName)
-        titleBar.value = String.format("$roomName ($headCount)")
+        _titleBar.value = String.format("$roomName ($headCount)")
     }
 
 
@@ -51,7 +57,7 @@ class ChatRoomViewModel() : ViewModel(),KoinComponent {
         val timeStamp = System.currentTimeMillis().longtoDateTime()
         val nickName = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
         val uID = Authentication.auth.uid.toString()
-        val msgData = Msg(ChatContentAdapter.MSG,nickName,chatContent.value,timeStamp,uID)
+        val msgData = Msg(ChatContentAdapter.MSG,nickName,_chatContent.value,timeStamp,uID)
         ChatDataBase.chatDataRef.push().setValue(msgData)
     }
 

@@ -13,13 +13,14 @@ class ChatRoomListViewModel :ViewModel(),KoinComponent {
 
     val roomInfoData = MutableLiveData<ArrayList<ChatRoomModel>>()
     private var items = ArrayList<ChatRoomModel>()
+
     init {
-        roomInfoData.value=items
+        roomInfoData.postValue(items)
     }
 
     fun addItem(roomInfo:ChatRoomModel){
         items.add(roomInfo)
-        roomInfoData.value = items
+        roomInfoData.postValue(items)
     }
     fun clear(){
         items.clear()

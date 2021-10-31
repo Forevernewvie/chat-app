@@ -7,4 +7,15 @@
     <string name="info">데모 버전 0.2v\n 개발자:최재빈\n기술스택\nFireBase,AAC,MVVM</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="talk">Talk</string>
+    <string name="jaebin_talk">Jaebin Talk</string>
+    <string name="createProfileTitle">프로필 설정</string>
+    <string name="getImg">이미지 선택</string>
+    <string name="singUp">회원 가입</string>
+    <string name="confirm">확인</string>
+    <string name="email">E-mail</string>
+    <string name="pwd">password</string>
+    <string name="login">LOGIN</string>
+    <string name="signup">SIGN Up</string>
+    <string name="nickName">닉네임</string>
 </resources>

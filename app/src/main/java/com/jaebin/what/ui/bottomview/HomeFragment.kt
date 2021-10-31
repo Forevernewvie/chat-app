@@ -42,7 +42,6 @@ class HomeFragment :Fragment() {
 
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         homeBinding.lifecycleOwner=this.viewLifecycleOwner
-        homeBinding.homeViewModel=homeViewModel
         return homeBinding.root
     }
 

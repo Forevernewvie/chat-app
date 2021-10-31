@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="findPwdVM"
+            type="com.jaebin.what.viewmodel.FindPwdViewModel" />
     </data>
 
     <LinearLayout
@@ -26,13 +28,14 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:hint="E-mail"
+            android:hint="@string/email"
             app:endIconMode="clear_text"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailText"
                 android:layout_width="300dp"
+                android:text="@={findPwdVM.email}"
                 android:inputType="textEmailAddress"
                 android:layout_height="50dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -44,7 +47,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content"
             android:backgroundTint="#000000"
-            android:text="확인">
+            android:text="@string/confirm">
 
         </com.google.android.material.button.MaterialButton>
 

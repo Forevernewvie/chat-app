@@ -11,23 +11,25 @@ import org.koin.core.component.inject
 class HomeViewModel :ViewModel(),KoinComponent{
     private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
 
-    private val title = MutableLiveData<String>()
-    val titleData:LiveData<String>
-        get() = title
 
-     var nickName = MutableLiveData<String>()
-     var profileImg = MutableLiveData<String>()
+    private val _nickName = MutableLiveData<String>()
+    val nickName:LiveData<String>
+        get() = _nickName
+
+    private val _profileImg = MutableLiveData<String>()
+    val profileImg:LiveData<String>
+        get() = _profileImg
+
 
 
     init {
-        profileImg.value= profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,"")
-        nickName.value = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
-        title.value="Jaebin Talk"
+        _profileImg.value= profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,"")
+        _nickName.value = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
     }
 
     fun setHomeView(){
-        nickName.value = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
-        profileImg.value= profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,"")
+        _nickName.value = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
+        _profileImg.value= profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,"")
     }
 }
 

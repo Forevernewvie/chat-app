@@ -6,9 +6,6 @@
         <variable
             name="msg"
             type="com.jaebin.what.viewmodel.ChatRoomViewModel" />
-        <variable
-            name="chatRoomListVM"
-            type="com.jaebin.what.viewmodel.ChatRoomListViewModel" />
     </data>
 
     <LinearLayout

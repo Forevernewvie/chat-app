@@ -1,7 +1,5 @@
-package com.jaebin.what.recyclerView
+package com.jaebin.what.bindingadapter
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter

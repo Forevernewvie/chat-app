@@ -25,13 +25,18 @@ import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.databinding.FragmentCreateProfileBinding
 import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.IntentUtils
+import com.jaebin.what.viewmodel.CreateProfileViewModel
 
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateProfileFragment : Fragment() {
     private val bitMapUtil : BitmapUtil by inject()
     private val intentUtils : IntentUtils by inject()
     private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
+    private val createProfileViewModel : CreateProfileViewModel by viewModel()
+
+
     private lateinit var careProfileBinding :FragmentCreateProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +44,7 @@ class CreateProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         careProfileBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_create_profile,container,false)
+        careProfileBinding.lifecycleOwner = this.viewLifecycleOwner
         return careProfileBinding.root
 
     }
@@ -47,18 +53,13 @@ class CreateProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         careProfileBinding.btnProfileOK.setOnClickListener {
-            getNickName()
+            createProfileViewModel.getNickName()
             it.findNavController().navigate(R.id.action_createProfile_to_fragment_home)
         }
 
         careProfileBinding.profileImg.setOnClickListener {
             filterActivityLauncher.launch(intentUtils.getSAF())
         }
-    }
-
-    private fun getNickName(){
-        val data = careProfileBinding.messengerTextView.text.toString()
-        profileLocalDataSource.saveProfile(SHAREDPREFERENCES_KEY,data)
     }
 
 

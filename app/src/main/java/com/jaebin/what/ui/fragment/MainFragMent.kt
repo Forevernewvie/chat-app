@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
@@ -19,21 +20,24 @@ import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentMainBinding
 import com.jaebin.what.signutil.GoogleLogin
 import com.jaebin.what.signutil.Login
+import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment: Fragment() {
 
     private lateinit var mainFragmentBinding:FragmentMainBinding
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val loginUtil : Login by inject()
     private val googleLoginUtil : GoogleLogin by inject()
-
+    private val mainViewModel : MainViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         mainFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_main, container, false)
+        mainFragmentBinding.lifecycleOwner= this.viewLifecycleOwner
         return mainFragmentBinding.root
     }
 
@@ -49,10 +53,28 @@ class MainFragment: Fragment() {
         }
 
         mainFragmentBinding.Login.setOnClickListener {
-            val email = mainFragmentBinding.emailText.text.toString()
-            val pwd = mainFragmentBinding.pwdText.text.toString()
-            loginUtil.singIn(email,pwd)
-            it.findNavController().navigate(R.id.action_mainFragment_to_bottomViewActivity)
+
+            mainViewModel.login(object :onSuccessOrFail{
+                override fun onSuccess() {
+                    Toast.makeText(context,"로그인 완료", Toast.LENGTH_SHORT).show()
+                    it.findNavController().navigate(R.id.action_mainFragment_to_bottomViewActivity)
+                }
+
+                override fun onFail() {
+                    Toast.makeText(context,"로그인 실패", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onEmailOrPassWordERR() {
+                    Toast.makeText(context,"이메일과 패스워드가 다릅니다.", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onInValidateEmail() {
+                    Toast.makeText(context,"유효하지 않는 이메일", Toast.LENGTH_SHORT).show()
+                }
+                override fun onSendEmail() {
+                }
+
+            })
         }
 
         mainFragmentBinding.googleSignUpBtn.setOnClickListener {
