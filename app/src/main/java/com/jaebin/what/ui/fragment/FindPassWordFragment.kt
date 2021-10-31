@@ -27,6 +27,7 @@ class FindPassWordFragment : Fragment() {
     ): View {
         findPwdBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_find_pass_word,container,false)
         findPwdBinding.lifecycleOwner = this.viewLifecycleOwner
+        findPwdBinding.findPwdVM = findPwdViewModel
         return findPwdBinding.root
     }
 

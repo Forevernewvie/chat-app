@@ -18,4 +18,5 @@
     <string name="login">LOGIN</string>
     <string name="signup">SIGN Up</string>
     <string name="nickName">닉네임</string>
+    <string name="writeText">메시지 쓰기.</string>
 </resources>

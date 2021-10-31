@@ -38,7 +38,7 @@
                 android:id="@+id/SignUpEmailText"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@={singUpVM.email}"
+                android:text="@={singUpVM._email}"
                 android:inputType="textEmailAddress" />
 
 
@@ -57,7 +57,7 @@
                 android:id="@+id/signUpPwdText"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@={singUpVM.pwd}"
+                android:text="@={singUpVM._pwd}"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 

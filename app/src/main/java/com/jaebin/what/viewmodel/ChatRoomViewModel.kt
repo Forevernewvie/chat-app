@@ -1,5 +1,7 @@
 package com.jaebin.what.viewmodel
 
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import android.util.Log
 import androidx.lifecycle.*
 import com.google.firebase.database.ChildEventListener
@@ -14,6 +16,8 @@ import com.jaebin.what.firebaseapi.ChatRoomDataBase
 import com.jaebin.what.model.ChatRoomModel
 import com.jaebin.what.model.Msg
 import com.jaebin.what.recyclerView.ChatContentAdapter
+import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
+import com.jaebin.what.utils.BitmapUtil
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinComponent
@@ -22,17 +26,14 @@ import org.koin.java.KoinJavaComponent.inject
 class ChatRoomViewModel() : ViewModel(),KoinComponent {
 
     private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
+    private val bitMapUtil : BitmapUtil by inject()
 
     val chatContentData = MutableLiveData<ArrayList<Msg>>()
-    private val items = ArrayList<Msg>()
+    private var items = ArrayList<Msg>()
 
-    private val _chatContent = MutableLiveData<String>()
-    val chatContent:LiveData<String>
-        get() = _chatContent
+    val _chatContent = MutableLiveData<String>()
+    val _titleBar = MutableLiveData<String>()
 
-    private val _titleBar = MutableLiveData<String>()
-    val titleBar : LiveData<String>
-        get() = _titleBar
 
     init {
         chatContentData.postValue(items)
@@ -50,6 +51,14 @@ class ChatRoomViewModel() : ViewModel(),KoinComponent {
     fun setTitleChatRoom(roomName:String,headCount:String){
         ChatDataBase.chatDataRef = ChatDataBase.database.getReference(roomName)
         _titleBar.value = String.format("$roomName ($headCount)")
+    }
+
+    fun setImgContent(bitmap:Bitmap){
+        val timeStamp = System.currentTimeMillis().longtoDateTime()
+        val nickName = profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_KEY,"")
+        val uID = Authentication.auth.uid.toString()
+        ChatDataBase.chatDataRef.push().setValue(Msg(viewType = IMAGE,name=nickName,time=timeStamp,uid = uID,
+            img = bitMapUtil.bitMapToString(bitmap!!)))
     }
 
 

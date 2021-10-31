@@ -43,8 +43,6 @@ class ChatRoomFragment : Fragment() {
     private lateinit var chatRoomBinding: FragmentChatroomBinding
     private val chatRoomViewModel: ChatRoomViewModel by sharedViewModel()
     private val chatRoomListViewModel: ChatRoomListViewModel by sharedViewModel()
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
-    private val bitMapUtil : BitmapUtil by inject()
     private val intentUtils : IntentUtils by inject()
     private  val chatContentAdapter:ChatContentAdapter by inject()
 
@@ -71,8 +69,6 @@ class ChatRoomFragment : Fragment() {
         initRecyclerView()
 
         chatRoomViewModel.setTitleChatRoom(roomName, headCount)
-
-
         chatRoomViewModel.getChatContentList()
 
         chatRoomBinding.sendButton.setOnClickListener {
@@ -119,16 +115,11 @@ class ChatRoomFragment : Fragment() {
                             )
 
                         } else {
-                            val timeStamp = System.currentTimeMillis().longtoDateTime()
-                            val nickName = profileLocalDataSource.getProfile(SHAREDPREFERENCES_KEY,"")
-                            val uID = auth.uid.toString()
                             val source = ImageDecoder.createSource(context.contentResolver, currentImageUri)
                             bitmap = ImageDecoder.decodeBitmap(source)
-                            ChatDataBase.chatDataRef.push().setValue(Msg(viewType = IMAGE,name=nickName,time=timeStamp,uid = uID,
-                                img = bitMapUtil.bitMapToString(bitmap!!)))
+                            chatRoomViewModel.setImgContent(bitmap!!)
                         }
                     }
-
 
                 }catch(e:Exception) {
                     e.printStackTrace()

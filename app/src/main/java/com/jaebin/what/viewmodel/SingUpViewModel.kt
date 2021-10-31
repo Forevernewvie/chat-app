@@ -15,15 +15,8 @@ class SingUpViewModel:ViewModel(),KoinComponent {
 
     private val loginUtil : Login by inject()
 
-    private val _email = MutableLiveData<String>()
-    val email: LiveData<String>
-        get() = _email
-
-    private val _pwd = MutableLiveData<String>()
-    val pwd: LiveData<String>
-        get() = _pwd
-
-
+   val _email = MutableLiveData<String>()
+   val _pwd = MutableLiveData<String>()
 
     fun signUp(callback:onSuccessOrFail){
         if (_email.value.toString() == "" || _pwd.value.toString() == ""){

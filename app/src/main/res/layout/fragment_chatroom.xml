@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:backgroundTint="#5B90BA"
-                app:title="@{msg.titleBar}"
+                app:title="@{msg._titleBar}"
                 android:layout_gravity="center_horizontal"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary" />
 
@@ -64,9 +64,9 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="2dip"
                 android:layout_marginTop="2dip"
-                android:text="@={msg.chatContent}"
+                android:text="@={msg._chatContent}"
                 android:layout_weight="1"
-                android:hint="메시지 쓰기."
+                android:hint="@string/writeText"
                 android:background="#8DFFFFFF" />
 
             <ImageView

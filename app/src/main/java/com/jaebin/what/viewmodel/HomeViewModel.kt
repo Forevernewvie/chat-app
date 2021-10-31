@@ -12,15 +12,8 @@ class HomeViewModel :ViewModel(),KoinComponent{
     private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
 
 
-    private val _nickName = MutableLiveData<String>()
-    val nickName:LiveData<String>
-        get() = _nickName
-
-    private val _profileImg = MutableLiveData<String>()
-    val profileImg:LiveData<String>
-        get() = _profileImg
-
-
+    val _nickName = MutableLiveData<String>()
+    val _profileImg = MutableLiveData<String>()
 
     init {
         _profileImg.value= profileLocalDataSource.getProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,"")

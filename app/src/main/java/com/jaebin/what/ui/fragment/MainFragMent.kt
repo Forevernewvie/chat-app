@@ -38,6 +38,7 @@ class MainFragment: Fragment() {
     ): View {
         mainFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_main, container, false)
         mainFragmentBinding.lifecycleOwner= this.viewLifecycleOwner
+        mainFragmentBinding.mainVM = mainViewModel
         return mainFragmentBinding.root
     }
 

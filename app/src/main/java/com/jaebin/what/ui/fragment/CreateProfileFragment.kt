@@ -19,7 +19,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_IMG_KEY
-import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
 import com.jaebin.what.R
 import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.databinding.FragmentCreateProfileBinding
@@ -31,9 +30,8 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateProfileFragment : Fragment() {
-    private val bitMapUtil : BitmapUtil by inject()
+
     private val intentUtils : IntentUtils by inject()
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
     private val createProfileViewModel : CreateProfileViewModel by viewModel()
 
 
@@ -45,6 +43,7 @@ class CreateProfileFragment : Fragment() {
     ): View? {
         careProfileBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_create_profile,container,false)
         careProfileBinding.lifecycleOwner = this.viewLifecycleOwner
+        careProfileBinding.createProfileVM = createProfileViewModel
         return careProfileBinding.root
 
     }
@@ -69,25 +68,21 @@ class CreateProfileFragment : Fragment() {
             val context = requireContext()
             if(it.resultCode == AppCompatActivity.RESULT_OK && it.data !=null) {
                 var currentImageUri = it.data?.data
-                val tempBitmap:Bitmap
+                val profileBitmap:Bitmap
 
                 try {
                     currentImageUri?.let {
                         if(Build.VERSION.SDK_INT < 28) {
-                            tempBitmap = MediaStore.Images.Media.getBitmap(
+                            profileBitmap = MediaStore.Images.Media.getBitmap(
                                 context.contentResolver,
                                 currentImageUri
                             )
-                            careProfileBinding.profileImg.setImageBitmap(tempBitmap)
-                            careProfileBinding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
-                            profileLocalDataSource.saveProfile(SHAREDPREFERENCES_IMG_KEY, bitMapUtil.bitMapToString(tempBitmap))
+                            createProfileViewModel.saveImage(profileBitmap)
                         }
                         else {
                             val source = ImageDecoder.createSource(context.contentResolver, currentImageUri)
-                            tempBitmap = ImageDecoder.decodeBitmap(source)
-                            careProfileBinding.profileImg.setImageBitmap(tempBitmap)
-                            careProfileBinding.profileImg.scaleType = ImageView.ScaleType.CENTER_CROP
-                            profileLocalDataSource.saveProfile(SHAREDPREFERENCES_IMG_KEY,bitMapUtil.bitMapToString(tempBitmap))
+                            profileBitmap = ImageDecoder.decodeBitmap(source)
+                            createProfileViewModel.saveImage(profileBitmap)
                         }
                     }
 

@@ -27,6 +27,7 @@ import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
 import com.jaebin.what.viewmodel.HomeViewModel
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment :Fragment() {
@@ -42,6 +43,7 @@ class HomeFragment :Fragment() {
 
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         homeBinding.lifecycleOwner=this.viewLifecycleOwner
+        homeBinding.homeViewModel = homeViewModel
         return homeBinding.root
     }
 

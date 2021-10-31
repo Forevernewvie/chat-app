@@ -28,12 +28,11 @@
             android:textStyle="bold" />
 
         <ImageView
-
             android:id="@+id/homeProfile_Img"
             android:layout_width="260dp"
             android:layout_height="260dp"
             android:layout_marginTop="47dp"
-            app:profileImgSrc="@{homeViewModel.profileImg}"
+            app:profileImgSrc="@{homeViewModel._profileImg}"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/img_view_shape"
             app:layout_constraintBottom_toTopOf="@+id/messengerTextView" />
@@ -47,7 +46,7 @@
             android:layout_marginTop="40dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="20sp"
-            android:text= "@={homeViewModel.nickName}"
+            android:text= "@={homeViewModel._nickName}"
             android:layout_gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -27,6 +27,7 @@ class SignUpFragment: Fragment() {
     ): View? {
         signUpBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_signup,container,false)
         signUpBinding.lifecycleOwner = this.viewLifecycleOwner
+        signUpBinding.singUpVM = singUpViewModel
         return signUpBinding.root
     }
 

@@ -13,9 +13,7 @@ import org.koin.core.component.inject
 class FindPwdViewModel:ViewModel(),KoinComponent {
     private val loginUtil : Login by inject()
 
-    private val _email= MutableLiveData<String>()
-    val email : LiveData<String>
-        get() = _email
+    val _email= MutableLiveData<String>()
 
     private fun resetPassword(callback:onSuccessOrFail){
         Authentication.auth.sendPasswordResetEmail(_email.value.toString()).addOnCompleteListener {

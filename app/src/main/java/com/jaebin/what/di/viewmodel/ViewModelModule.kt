@@ -15,5 +15,6 @@ val ViewModelModule = module {
    viewModel {CreateProfileViewModel()}
    viewModel {MainViewModel()}
    viewModel {SingUpViewModel()}
+   viewModel {FindPwdViewModel()}
 
 }

@@ -38,7 +38,7 @@
                             android:id="@+id/emailText"
                             android:layout_width="300dp"
                             android:inputType="textEmailAddress"
-                            android:text="@={mainVM.email}"
+                            android:text="@={mainVM._email}"
                             android:layout_height="50dp" />
 
 
@@ -58,7 +58,7 @@
                             android:inputType="textPassword"
                             android:id="@+id/pwdText"
                             android:maxLength="20"
-                            android:text="@={mainVM.pwd}"
+                            android:text="@={mainVM._pwd}"
                             android:layout_width="300dp"
                             android:layout_height="50dp" />
                 </com.google.android.material.textfield.TextInputLayout>
