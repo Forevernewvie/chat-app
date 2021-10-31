@@ -37,7 +37,7 @@ class MainViewModel :ViewModel(),KoinComponent {
         if(loginUtil.validateEmail(_email.value.toString())){
             singIn(callback)
         }else{
-            callback.onInValidateEmail()
+            callback.onFail()
             return
         }
     }
