@@ -1,12 +1,11 @@
 package com.jaebin.what.viewmodel
 
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.signutil.Login
-import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.utils.OnSuccessOrFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -15,7 +14,7 @@ class FindPwdViewModel:ViewModel(),KoinComponent {
 
     val _email= MutableLiveData<String>()
 
-    private fun resetPassword(callback:onSuccessOrFail){
+    private fun resetPassword(callback:OnSuccessOrFail){
         Authentication.auth.sendPasswordResetEmail(_email.value.toString()).addOnCompleteListener {
             if(it.isSuccessful){
                 callback.onSendEmail()
@@ -27,7 +26,7 @@ class FindPwdViewModel:ViewModel(),KoinComponent {
         }
     }
 
-    fun findPassword(callback:onSuccessOrFail){
+    fun findPassword(callback:OnSuccessOrFail){
         if(loginUtil.validateEmail(_email.value.toString())){
             resetPassword(callback)
         }else{

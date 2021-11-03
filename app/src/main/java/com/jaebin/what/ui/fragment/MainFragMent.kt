@@ -19,8 +19,7 @@ import com.jaebin.what.ConstantsVal.RC_SIGN_IN
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentMainBinding
 import com.jaebin.what.signutil.GoogleLogin
-import com.jaebin.what.signutil.Login
-import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.utils.OnSuccessOrFail
 import com.jaebin.what.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,7 +54,7 @@ class MainFragment: Fragment() {
 
         mainFragmentBinding.Login.setOnClickListener {
 
-            mainViewModel.login(object :onSuccessOrFail{
+            mainViewModel.login(object :OnSuccessOrFail{
                 override fun onSuccess() {
                     Toast.makeText(context,"로그인 완료", Toast.LENGTH_SHORT).show()
                     it.findNavController().navigate(R.id.action_mainFragment_to_bottomViewActivity)

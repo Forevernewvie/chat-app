@@ -1,11 +1,10 @@
 package com.jaebin.what.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.signutil.Login
-import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.utils.OnSuccessOrFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -16,7 +15,7 @@ class MainViewModel :ViewModel(),KoinComponent {
     val _email = MutableLiveData<String>()
     val _pwd = MutableLiveData<String>()
 
-    private fun singIn(callback:onSuccessOrFail){
+    private fun singIn(callback:OnSuccessOrFail){
 
         if (_email.value.toString() == "" || _pwd.value.toString() == ""){
             callback.onEmailOrPassWordERR()
@@ -33,7 +32,7 @@ class MainViewModel :ViewModel(),KoinComponent {
     }
 
 
-    fun login(callback:onSuccessOrFail){
+    fun login(callback:OnSuccessOrFail){
         if(loginUtil.validateEmail(_email.value.toString())){
             singIn(callback)
         }else{

@@ -1,6 +1,6 @@
 package com.jaebin.what.utils
 
-interface onSuccessOrFail {
+interface OnSuccessOrFail {
     fun onSuccess()
     fun onFail()
     fun onEmailOrPassWordERR()

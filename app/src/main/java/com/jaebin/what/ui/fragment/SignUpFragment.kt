@@ -10,10 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentSignupBinding
-import com.jaebin.what.signutil.Login
-import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.utils.OnSuccessOrFail
 import com.jaebin.what.viewmodel.SingUpViewModel
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment: Fragment() {
@@ -35,7 +33,7 @@ class SignUpFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         signUpBinding.sumbit.setOnClickListener {
-            singUpViewModel.signUp(object :onSuccessOrFail{
+            singUpViewModel.signUp(object :OnSuccessOrFail{
                 override fun onSuccess() {
                     Toast.makeText(context,"회원가입 완료",Toast.LENGTH_SHORT).show()
                     it.findNavController().navigate(R.id.action_signUpFragment_to_mainFragment)

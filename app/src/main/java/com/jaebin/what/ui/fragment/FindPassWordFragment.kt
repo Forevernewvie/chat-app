@@ -10,10 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentFindPassWordBinding
-import com.jaebin.what.signutil.Login
-import com.jaebin.what.utils.onSuccessOrFail
+import com.jaebin.what.utils.OnSuccessOrFail
 import com.jaebin.what.viewmodel.FindPwdViewModel
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FindPassWordFragment : Fragment() {
@@ -34,7 +32,7 @@ class FindPassWordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         findPwdBinding.confirmBtn.setOnClickListener {
-            findPwdViewModel.findPassword(object:onSuccessOrFail{
+            findPwdViewModel.findPassword(object:OnSuccessOrFail{
                 override fun onSuccess() {
                     it.findNavController().navigate(R.id.action_findPassWordFragment_to_mainFragment)
                 }
