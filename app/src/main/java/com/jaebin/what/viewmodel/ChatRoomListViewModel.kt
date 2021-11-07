@@ -2,14 +2,16 @@ package com.jaebin.what.viewmodel
 
 
 import androidx.lifecycle.*
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.jaebin.what.firebaseapi.ChatRoomDataBase
+import com.jaebin.what.data.roomlist.RoomListRepositoryImpl
 import com.jaebin.what.model.ChatRoomModel
+import com.jaebin.what.utils.OnDataListenSuccessOrFail
+import com.jaebin.what.utils.OnFail
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class ChatRoomListViewModel :ViewModel(),KoinComponent {
+
+    private val roomRemoteDataSource: RoomListRepositoryImpl by inject()
 
     val roomInfoData = MutableLiveData<ArrayList<ChatRoomModel>>()
     private var items = ArrayList<ChatRoomModel>()
@@ -21,34 +23,25 @@ class ChatRoomListViewModel :ViewModel(),KoinComponent {
     fun addItem(roomInfo:ChatRoomModel){
         items.add(roomInfo)
         roomInfoData.postValue(items)
+
     }
     fun clear(){
         items.clear()
-        roomInfoData.value = items
+        roomInfoData.postValue(items)
     }
 
-     fun getChatRoomList(){
+    fun getChatRoomList(callback: OnFail){
+        roomRemoteDataSource.fetchRoomInfoData(object : OnDataListenSuccessOrFail<ChatRoomModel> {
+            override fun success(item: ChatRoomModel) {
+                addItem(item)
+            }
 
-         ChatRoomDataBase.chatRoomRef.addChildEventListener(object : ChildEventListener {
-             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                 for (data in snapshot.children) {
-                     var testItem = data.getValue(ChatRoomModel::class.java)!!
-                     addItem(testItem)
-                 }
-             }
-             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
-             }
-             override fun onChildRemoved(snapshot: DataSnapshot) {
-             }
-             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-
-             }
-             override fun onCancelled(error: DatabaseError) {
-
-             }
-         })
-         clear()
-     }
+            override fun fail(errMsg: String) {
+                callback.onFail(errMsg)
+                return
+            }
+        })
+        clear()
+    }
 
 }

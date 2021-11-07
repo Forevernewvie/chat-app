@@ -28,6 +28,6 @@ class CreateProfileViewModel : ViewModel(),KoinComponent {
     }
 
      fun getNickName(){
-        profileLocalDataSource.saveProfile(ConstantsVal.SHAREDPREFERENCES_KEY,_nickName.value!!)
+         profileLocalDataSource.saveProfile(ConstantsVal.SHAREDPREFERENCES_KEY,_nickName.value!!)
     }
 }

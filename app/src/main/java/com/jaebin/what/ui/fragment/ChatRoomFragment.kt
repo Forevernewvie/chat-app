@@ -32,8 +32,12 @@ import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
 import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.MSG
 import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.IntentUtils
+import com.jaebin.what.utils.OnFail
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
 import com.jaebin.what.viewmodel.ChatRoomViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -69,7 +73,12 @@ class ChatRoomFragment : Fragment() {
         initRecyclerView()
 
         chatRoomViewModel.setTitleChatRoom(roomName, headCount)
-        chatRoomViewModel.getChatContentList()
+
+        chatRoomViewModel.getMsgList(object :OnFail{
+            override fun onFail(errMsg: String) {
+                Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
+            }
+        })
 
         chatRoomBinding.sendButton.setOnClickListener {
             chatRoomViewModel.setChatContent()

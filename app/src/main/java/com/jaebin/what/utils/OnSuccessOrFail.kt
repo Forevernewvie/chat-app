@@ -7,3 +7,4 @@ interface OnSuccessOrFail {
     fun onInValidateEmail()
     fun onSendEmail()
 }
+
