@@ -3,17 +3,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentRoomlistBinding
 import com.jaebin.what.recyclerView.ChatRoomListDataAdapter
+import com.jaebin.what.utils.OnFail
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ChatRoomListFragment : Fragment() {
 
@@ -35,8 +35,13 @@ class ChatRoomListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
 
-        chatRoomListViewModel.getChatRoomList()
-        chatRoomListViewModel.roomInfoData.observe(viewLifecycleOwner, Observer {
+        chatRoomListViewModel.getChatRoomList(object :OnFail{
+            override fun onFail(errMsg: String) {
+                Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        chatRoomListViewModel.roomInfoData.observe(viewLifecycleOwner, {
             chatRoomListAdapter.setData(it)
         })
 

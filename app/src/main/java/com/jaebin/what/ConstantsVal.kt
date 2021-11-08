@@ -7,4 +7,6 @@ object ConstantsVal {
     const val RC_SIGN_IN = 9001
     const val REF = "chatRoomContent"
     const val DIALOG_TITLE ="채팅방 설정"
+    const val FIREBASE_ERR_MSG = "파이어베이스 통신에러"
+    const val DEFAULT_NICK_NAME = "DEFAULT"
 }

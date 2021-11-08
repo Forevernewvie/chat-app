@@ -32,9 +32,10 @@
             android:layout_width="260dp"
             android:layout_height="260dp"
             android:layout_marginTop="25dp"
+            android:background="@drawable/img_view_shape"
             app:createProfileImgSrc="@{createProfileVM._profileImg}"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/img_view_shape" />
+           />
 
         <TextView
             android:layout_width="wrap_content"

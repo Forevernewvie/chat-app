@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.jaebin.what.ConstantsVal.DIALOG_TITLE
 import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_IMG_KEY
 import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
 import com.jaebin.what.Extension.makeRandomString
@@ -39,7 +40,7 @@ class HomeFragment :Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         homeBinding.lifecycleOwner=this.viewLifecycleOwner
@@ -63,9 +64,9 @@ class HomeFragment :Fragment() {
     }
 
     private fun roomInfoDialog(context: Context) {
-        var builder = AlertDialog.Builder(context)
-        builder.setTitle("채팅방 설정")
-        var dialogBinding= DialogBinding.inflate(LayoutInflater.from(context))
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(DIALOG_TITLE)
+        val dialogBinding= DialogBinding.inflate(LayoutInflater.from(context))
         builder.setView(dialogBinding.root)
 
         val randomString = ('a'..'z') + ('A'..'Z') + ('0'..'9')

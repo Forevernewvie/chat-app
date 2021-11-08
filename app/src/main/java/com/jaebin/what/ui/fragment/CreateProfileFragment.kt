@@ -10,7 +10,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,14 +17,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_IMG_KEY
 import com.jaebin.what.R
-import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.databinding.FragmentCreateProfileBinding
-import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.IntentUtils
 import com.jaebin.what.viewmodel.CreateProfileViewModel
-
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,7 +28,7 @@ class CreateProfileFragment : Fragment() {
 
     private val intentUtils : IntentUtils by inject()
     private val createProfileViewModel : CreateProfileViewModel by viewModel()
-
+    private lateinit var profileBitmap:Bitmap
 
     private lateinit var careProfileBinding :FragmentCreateProfileBinding
     override fun onCreateView(
@@ -52,7 +47,7 @@ class CreateProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         careProfileBinding.btnProfileOK.setOnClickListener {
-            createProfileViewModel.getNickName()
+            createProfileViewModel.saveNickName()
             it.findNavController().navigate(R.id.action_createProfile_to_fragment_home)
         }
 
@@ -61,14 +56,17 @@ class CreateProfileFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        createProfileViewModel.setView()
+    }
 
     private val filterActivityLauncher: ActivityResultLauncher<Intent> =
 
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             val context = requireContext()
             if(it.resultCode == AppCompatActivity.RESULT_OK && it.data !=null) {
-                var currentImageUri = it.data?.data
-                val profileBitmap:Bitmap
+                val currentImageUri = it.data?.data
 
                 try {
                     currentImageUri?.let {

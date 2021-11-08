@@ -1,31 +1,27 @@
 package com.jaebin.what.viewmodel
 
 import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.util.Log
 import androidx.lifecycle.*
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.jaebin.what.ConstantsVal
 import com.jaebin.what.Extension.longtoDateTime
+import com.jaebin.what.data.msg.MsgRepositoryImpl
+import com.jaebin.what.data.profile.ProfileRepositoryImpl
 import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.firebaseapi.ChatDataBase
-import com.jaebin.what.firebaseapi.ChatRoomDataBase
-import com.jaebin.what.model.ChatRoomModel
 import com.jaebin.what.model.Msg
 import com.jaebin.what.recyclerView.ChatContentAdapter
 import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
 import com.jaebin.what.utils.BitmapUtil
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.jaebin.what.utils.OnDataListenSuccessOrFail
+import com.jaebin.what.utils.OnFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.java.KoinJavaComponent.inject
-class ChatRoomViewModel() : ViewModel(),KoinComponent {
 
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
+class ChatRoomViewModel: ViewModel(),KoinComponent {
+
+    private val msgRemoteDataSource : MsgRepositoryImpl by inject()
+    private val profileLocalDataSource: ProfileRepositoryImpl by inject()
     private val bitMapUtil : BitmapUtil by inject()
 
     val chatContentData = MutableLiveData<ArrayList<Msg>>()
@@ -39,13 +35,13 @@ class ChatRoomViewModel() : ViewModel(),KoinComponent {
         chatContentData.postValue(items)
     }
 
-    fun addItem(roomInfo:Msg){
-        items.add(roomInfo)
+    fun addItem(msg:Msg){
+        items.add(msg)
         chatContentData.postValue(items)
     }
     fun clear(){
         items.clear()
-        chatContentData.value = items
+        chatContentData.postValue(items)
     }
 
     fun setTitleChatRoom(roomName:String,headCount:String){
@@ -70,22 +66,18 @@ class ChatRoomViewModel() : ViewModel(),KoinComponent {
         ChatDataBase.chatDataRef.push().setValue(msgData)
     }
 
-    fun getChatContentList(){
-        clear()
-        ChatDataBase.chatDataRef.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                    addItem( snapshot.getValue(Msg::class.java)!!)
-                }
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+
+    fun getMsgList(callback: OnFail){
+        msgRemoteDataSource.fetchMsgData(object:OnDataListenSuccessOrFail<Msg>{
+            override fun success(item: Msg) {
+               addItem(item)
             }
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-            }
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-            }
-            override fun onCancelled(error: DatabaseError) {
+
+            override fun fail(errMsg: String) {
+                callback.onFail(errMsg)
             }
         })
-
+        clear()
     }
 
 }

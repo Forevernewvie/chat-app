@@ -4,13 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jaebin.what.ConstantsVal
+import com.jaebin.what.data.profile.ProfileRepositoryImpl
 import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class HomeViewModel :ViewModel(),KoinComponent{
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
 
+    private val profileLocalDataSource: ProfileRepositoryImpl by inject()
 
     val _nickName = MutableLiveData<String>()
     val _profileImg = MutableLiveData<String>()

@@ -4,7 +4,9 @@ import android.graphics.Bitmap
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
+import com.jaebin.what.R
 import com.jaebin.what.utils.BitmapUtil
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -43,6 +45,7 @@ object BindingImage:KoinComponent {
         }
     }
 
+    
     @JvmStatic
     @BindingAdapter("createProfileImgSrc")
     fun loadCreateProfileImg(imgView: ImageView, createProfileImg: Bitmap) {
