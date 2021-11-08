@@ -38,6 +38,7 @@ class CreateProfileViewModel : ViewModel(),KoinComponent {
         profileLocalDataSource.saveProfile(ConstantsVal.SHAREDPREFERENCES_IMG_KEY,bitMapUtil.bitMapToString(bitmap))
     }
 
+
      fun saveNickName(){
          profileLocalDataSource.saveProfile(ConstantsVal.SHAREDPREFERENCES_KEY,_nickName.value!!)
     }
