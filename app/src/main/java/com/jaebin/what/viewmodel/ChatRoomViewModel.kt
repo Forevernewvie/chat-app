@@ -6,7 +6,6 @@ import com.jaebin.what.ConstantsVal
 import com.jaebin.what.Extension.longtoDateTime
 import com.jaebin.what.data.msg.MsgRepositoryImpl
 import com.jaebin.what.data.profile.ProfileRepositoryImpl
-import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.firebaseapi.ChatDataBase
 import com.jaebin.what.model.Msg
@@ -14,7 +13,6 @@ import com.jaebin.what.recyclerView.ChatContentAdapter
 import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
 import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.OnDataListenSuccessOrFail
-import com.jaebin.what.utils.OnFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -67,14 +65,14 @@ class ChatRoomViewModel: ViewModel(),KoinComponent {
     }
 
 
-    fun getMsgList(callback: OnFail){
+    fun getMsgList(onFail:(String)->Unit){
         msgRemoteDataSource.fetchMsgData(object:OnDataListenSuccessOrFail<Msg>{
             override fun success(item: Msg) {
                addItem(item)
             }
 
             override fun fail(errMsg: String) {
-                callback.onFail(errMsg)
+                onFail(errMsg)
             }
         })
         clear()

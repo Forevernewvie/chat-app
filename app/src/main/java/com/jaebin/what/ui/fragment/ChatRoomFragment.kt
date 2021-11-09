@@ -17,30 +17,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.jaebin.what.ConstantsVal
-import com.jaebin.what.Extension.longtoDateTime
-import com.jaebin.what.firebaseapi.Authentication.auth
 import com.jaebin.what.ConstantsVal.POS_KEY
-import com.jaebin.what.ConstantsVal.SHAREDPREFERENCES_KEY
 import com.jaebin.what.R
-import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.databinding.FragmentChatroomBinding
-import com.jaebin.what.firebaseapi.ChatDataBase
-import com.jaebin.what.model.Msg
 import com.jaebin.what.recyclerView.ChatContentAdapter
-import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
-import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.MSG
-import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.IntentUtils
-import com.jaebin.what.utils.OnFail
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
 import com.jaebin.what.viewmodel.ChatRoomViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ChatRoomFragment : Fragment() {
@@ -74,11 +59,11 @@ class ChatRoomFragment : Fragment() {
 
         chatRoomViewModel.setTitleChatRoom(roomName, headCount)
 
-        chatRoomViewModel.getMsgList(object :OnFail{
-            override fun onFail(errMsg: String) {
-                Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
-            }
-        })
+        chatRoomViewModel.getMsgList {
+            errMsg -> Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
+        }
+
+
 
         chatRoomBinding.sendButton.setOnClickListener {
             chatRoomViewModel.setChatContent()

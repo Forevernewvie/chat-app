@@ -5,7 +5,6 @@ import androidx.lifecycle.*
 import com.jaebin.what.data.roomlist.RoomListRepositoryImpl
 import com.jaebin.what.model.ChatRoomModel
 import com.jaebin.what.utils.OnDataListenSuccessOrFail
-import com.jaebin.what.utils.OnFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -30,14 +29,14 @@ class ChatRoomListViewModel :ViewModel(),KoinComponent {
         roomInfoData.postValue(items)
     }
 
-    fun getChatRoomList(callback: OnFail){
+    fun getChatRoomList(onFail:(String)->Unit){
         roomRemoteDataSource.fetchRoomInfoData(object : OnDataListenSuccessOrFail<ChatRoomModel> {
             override fun success(item: ChatRoomModel) {
                 addItem(item)
             }
 
             override fun fail(errMsg: String) {
-                callback.onFail(errMsg)
+                onFail(errMsg)
                 return
             }
         })

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentRoomlistBinding
 import com.jaebin.what.recyclerView.ChatRoomListDataAdapter
-import com.jaebin.what.utils.OnFail
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -35,11 +34,9 @@ class ChatRoomListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
 
-        chatRoomListViewModel.getChatRoomList(object :OnFail{
-            override fun onFail(errMsg: String) {
-                Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
-            }
-        })
+        chatRoomListViewModel.getChatRoomList{
+            errMsg-> Toast.makeText(context,errMsg,Toast.LENGTH_SHORT).show()
+        }
 
         chatRoomListViewModel.roomInfoData.observe(viewLifecycleOwner, {
             chatRoomListAdapter.setData(it)
