@@ -4,7 +4,8 @@
 
 메인화면
 
-MVVM 스럽게 코드를 리팩토링 했으나 제대로된 MVVM인가 확답은 못하겠네요.
+기술 스택<br>
+MVVM, AAC(databinding, navigation, viewmodel,livedata), Firebase realtimeBase, sharedPreferences, Koin)
 
 ![main](https://user-images.githubusercontent.com/53516129/135251866-a8843fd2-9fd6-45de-b535-bc06cdef4a7b.PNG)
 
