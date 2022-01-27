@@ -26,8 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateProfileFragment : Fragment() {
 
-    private val intentUtils : IntentUtils by inject()
-    private val createProfileViewModel : CreateProfileViewModel by viewModel()
+
     private lateinit var profileBitmap:Bitmap
 
     private lateinit var careProfileBinding :FragmentCreateProfileBinding

@@ -4,23 +4,15 @@ import android.graphics.Bitmap
 import androidx.lifecycle.*
 import com.jaebin.what.ConstantsVal
 import com.jaebin.what.Extension.longtoDateTime
-import com.jaebin.what.data.msg.MsgRepositoryImpl
-import com.jaebin.what.data.profile.ProfileRepositoryImpl
 import com.jaebin.what.firebaseapi.Authentication
-import com.jaebin.what.firebaseapi.ChatDataBase
 import com.jaebin.what.model.Msg
 import com.jaebin.what.recyclerView.ChatContentAdapter
 import com.jaebin.what.recyclerView.ChatContentAdapter.Companion.IMAGE
-import com.jaebin.what.utils.BitmapUtil
 import com.jaebin.what.utils.OnDataListenSuccessOrFail
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class ChatRoomViewModel: ViewModel(),KoinComponent {
+class ChatRoomViewModel: ViewModel() {
 
-    private val msgRemoteDataSource : MsgRepositoryImpl by inject()
-    private val profileLocalDataSource: ProfileRepositoryImpl by inject()
-    private val bitMapUtil : BitmapUtil by inject()
+
 
     val chatContentData = MutableLiveData<ArrayList<Msg>>()
     private var items = ArrayList<Msg>()

@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.jaebin.what.firebaseapi.Authentication
 import com.jaebin.what.signutil.Login
 import com.jaebin.what.utils.OnSuccessOrFail
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class SingUpViewModel:ViewModel(),KoinComponent {
 
-    private val loginUtil : Login by inject()
+class SingUpViewModel:ViewModel() {
+
+
 
    val _email = MutableLiveData<String>()
    val _pwd = MutableLiveData<String>()

@@ -1,15 +1,11 @@
 package com.jaebin.what.data.msg.remote
 
 import com.jaebin.what.model.Msg
+import io.reactivex.rxjava3.core.Flowable
 
 interface MsgRemoteDataSource {
-    fun fetchMsgData(callback: OnMsgDataListener)
+    fun fetchMsgData() : Flowable<List<Msg>>
 }
 
-
-interface OnMsgDataListener{
-    fun success(msg: Msg)
-    fun fail(errMsg:String)
-}
 
 

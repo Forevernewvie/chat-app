@@ -1,14 +1,11 @@
 package com.jaebin.what.data.roomlist.remote
 
 import com.jaebin.what.model.ChatRoomModel
+import io.reactivex.rxjava3.core.Flowable
 
 interface RoomListRemoteDataSource {
-    fun fetchRoomInfoData(callback: OnRoomInfoDataListener)
+    fun fetchRoomInfoData() : Flowable<List<ChatRoomModel>>
 }
 
-interface OnRoomInfoDataListener{
-    fun success(roomModel: ChatRoomModel)
-    fun fail(errMsg:String)
-}
 
 

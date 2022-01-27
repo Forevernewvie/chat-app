@@ -9,9 +9,9 @@ import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class HomeViewModel :ViewModel(),KoinComponent{
+class HomeViewModel :ViewModel(){
 
-    private val profileLocalDataSource: ProfileRepositoryImpl by inject()
+
 
     val _nickName = MutableLiveData<String>()
     val _profileImg = MutableLiveData<String>()

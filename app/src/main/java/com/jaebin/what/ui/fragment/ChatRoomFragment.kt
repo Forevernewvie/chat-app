@@ -30,10 +30,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ChatRoomFragment : Fragment() {
     private lateinit var chatRoomBinding: FragmentChatroomBinding
-    private val chatRoomViewModel: ChatRoomViewModel by sharedViewModel()
-    private val chatRoomListViewModel: ChatRoomListViewModel by sharedViewModel()
-    private val intentUtils : IntentUtils by inject()
-    private  val chatContentAdapter:ChatContentAdapter by inject()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

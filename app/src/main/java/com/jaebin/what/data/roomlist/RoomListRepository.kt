@@ -4,7 +4,7 @@ import com.jaebin.what.model.ChatRoomModel
 import com.jaebin.what.utils.OnDataListenSuccessOrFail
 
 interface RoomListRepository {
-    fun fetchRoomInfoData(callback: OnDataListenSuccessOrFail<ChatRoomModel>)
+    fun fetchRoomInfoData()
 }
 
 

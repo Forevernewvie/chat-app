@@ -1,12 +1,13 @@
 package com.jaebin.what.data.profile
 
-import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import com.jaebin.what.data.profile.local.ProfileLocalDataSource
+import javax.inject.Inject
 
-class ProfileRepositoryImpl : ProfileRepository,KoinComponent {
+class ProfileRepositoryImpl @Inject constructor(
+    private val profileLocalDataSource: ProfileLocalDataSource
+) : ProfileRepository  {
 
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
+
 
     override fun saveProfile(key: String, str: String) {
         profileLocalDataSource.saveProfile(key,str)

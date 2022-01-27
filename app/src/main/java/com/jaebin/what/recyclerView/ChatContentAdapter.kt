@@ -14,8 +14,6 @@ class ChatContentAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var chatData = mutableListOf<Msg>()
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         val inflater = LayoutInflater.from(parent.context)

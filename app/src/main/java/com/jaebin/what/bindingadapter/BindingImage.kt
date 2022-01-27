@@ -8,20 +8,19 @@ import androidx.databinding.InverseBindingAdapter
 import com.bumptech.glide.Glide
 import com.jaebin.what.R
 import com.jaebin.what.utils.BitmapUtil
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-
+import javax.inject.Inject
 
 
 //kotlin object 객체는 상속이 가능
-object BindingImage:KoinComponent {
+object BindingImage {
 
-    private val bitMapUtil: BitmapUtil by inject()
+    @Inject
+    lateinit var bitmapUtil: BitmapUtil
 
     @JvmStatic
     @BindingAdapter("imageSrc")
     fun loadImage(imgView: ImageView, img: String) {
-        val bitMapImg = bitMapUtil.stringToBitMap(img)
+        val bitMapImg = bitmapUtil.stringToBitMap(img)
         Glide
             .with(imgView.context)
             .load(bitMapImg)
@@ -38,7 +37,7 @@ object BindingImage:KoinComponent {
         } else {
             Glide
                 .with(imgView.context)
-                .load(bitMapUtil.stringToBitMap(profileImg))
+                .load(bitmapUtil.stringToBitMap(profileImg))
                 .centerCrop()
                 .into(imgView)
 

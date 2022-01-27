@@ -16,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignUpFragment: Fragment() {
     private lateinit var signUpBinding: FragmentSignupBinding
-    private val singUpViewModel: SingUpViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

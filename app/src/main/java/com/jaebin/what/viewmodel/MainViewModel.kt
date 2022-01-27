@@ -8,9 +8,9 @@ import com.jaebin.what.utils.OnSuccessOrFail
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MainViewModel :ViewModel(),KoinComponent {
+class MainViewModel :ViewModel() {
 
-    private val loginUtil : Login by inject()
+
 
     val _email = MutableLiveData<String>()
     val _pwd = MutableLiveData<String>()

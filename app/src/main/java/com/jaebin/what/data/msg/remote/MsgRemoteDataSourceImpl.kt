@@ -3,28 +3,42 @@ package com.jaebin.what.data.msg.remote
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.jaebin.what.ConstantsVal.FIREBASE_ERR_MSG
-import com.jaebin.what.firebaseapi.ChatDataBase
+import com.google.firebase.database.DatabaseReference
 import com.jaebin.what.model.Msg
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Flowable
+import javax.inject.Inject
 
-class MsgRemoteDataSourceImpl : MsgRemoteDataSource{
-    override fun fetchMsgData(callback: OnMsgDataListener) {
+class MsgRemoteDataSourceImpl @Inject constructor(
+    private val database: DatabaseReference
+) : MsgRemoteDataSource{
 
-        ChatDataBase.chatDataRef.addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-               callback.success(snapshot.getValue(Msg::class.java)!!)
+    override fun fetchMsgData(): Flowable<List<Msg>> {
+       return Flowable.create({
+           emitter->
+           val msgListener = object :  ChildEventListener{
+               override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                   val msgList = snapshot.getValue(Msg::class.java)!!
+                   emitter.onNext(listOf(msgList))
+               }
 
-            }
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-            }
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-            }
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-            }
-            override fun onCancelled(error: DatabaseError) {
-                callback.fail(FIREBASE_ERR_MSG)
-            }
-        })
+               override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+               }
 
+               override fun onChildRemoved(snapshot: DataSnapshot) {
+               }
+
+               override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+               }
+
+               override fun onCancelled(error: DatabaseError) {
+                    emitter.onError(error.toException())
+               }
+
+           }
+           database.addChildEventListener(msgListener)
+
+       },BackpressureStrategy.BUFFER)
     }
+
 }

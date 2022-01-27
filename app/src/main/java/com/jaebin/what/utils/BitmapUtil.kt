@@ -20,7 +20,22 @@ class BitmapUtil {
         val encodeByte = Base64.decode(encodeString, Base64.DEFAULT)
         return BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.size)
     }
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

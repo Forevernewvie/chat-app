@@ -6,7 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jaebin.what.R
+import com.jaebin.what.base.BaseActivity
 import com.jaebin.what.databinding.ActivityBottomViewBinding
+import com.jaebin.what.databinding.ActivityMainBinding
 
 class BottomViewActivity : AppCompatActivity() {
 

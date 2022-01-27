@@ -11,14 +11,10 @@ import com.jaebin.what.R
 import com.jaebin.what.databinding.FragmentRoomlistBinding
 import com.jaebin.what.recyclerView.ChatRoomListDataAdapter
 import com.jaebin.what.viewmodel.ChatRoomListViewModel
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ChatRoomListFragment : Fragment() {
 
     private lateinit var roomListBinding : FragmentRoomlistBinding
-    private val chatRoomListViewModel: ChatRoomListViewModel by sharedViewModel()
-    private val chatRoomListAdapter : ChatRoomListDataAdapter by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,

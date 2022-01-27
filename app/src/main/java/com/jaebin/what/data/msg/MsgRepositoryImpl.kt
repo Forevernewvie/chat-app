@@ -1,26 +1,16 @@
 package com.jaebin.what.data.msg
 
-import com.jaebin.what.data.msg.remote.MsgRemoteDataSourceImpl
-import com.jaebin.what.data.msg.remote.OnMsgDataListener
+
+import com.jaebin.what.data.msg.remote.MsgRemoteDataSource
 import com.jaebin.what.model.Msg
-import com.jaebin.what.utils.OnDataListenSuccessOrFail
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class MsgRepositoryImpl :MsgRepository,KoinComponent{
-
-    private val msgRemoteDataSource: MsgRemoteDataSourceImpl by inject()
-
-    override fun fetchMsgData(callback: OnDataListenSuccessOrFail<Msg>) {
-        msgRemoteDataSource.fetchMsgData(object :OnMsgDataListener{
-            override fun success(msg: Msg) {
-               callback.success(msg)
-            }
-
-            override fun fail(errMsg: String) {
-               callback.fail(errMsg)
-            }
-        })
+class MsgRepositoryImpl @Inject constructor(
+    private val msgRemoteDataSource : MsgRemoteDataSource
+) :MsgRepository{
+    override fun fetchMsgData(): Flowable<List<Msg>> {
+        return msgRemoteDataSource.fetchMsgData().observeOn(Schedulers.io())
     }
-
 }

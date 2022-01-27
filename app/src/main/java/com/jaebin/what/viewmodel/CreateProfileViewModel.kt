@@ -7,12 +7,9 @@ import com.jaebin.what.ConstantsVal
 import com.jaebin.what.ConstantsVal.DEFAULT_NICK_NAME
 import com.jaebin.what.data.profile.local.ProfileLocalDataSourceImpl
 import com.jaebin.what.utils.BitmapUtil
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class CreateProfileViewModel : ViewModel(),KoinComponent {
-    private val profileLocalDataSource: ProfileLocalDataSourceImpl by inject()
-    private val bitMapUtil : BitmapUtil by inject()
+class CreateProfileViewModel : ViewModel() {
+
 
     val _nickName= MutableLiveData<String>()
     val _profileImg = MutableLiveData<Bitmap>()

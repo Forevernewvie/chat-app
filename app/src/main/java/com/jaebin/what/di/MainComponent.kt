@@ -1,0 +1,15 @@
+package com.example.ktrotest.di
+
+import com.jaebin.what.ui.activity.MainActivity
+import dagger.Subcomponent
+
+@Subcomponent
+interface MainComponent {
+
+    @Subcomponent.Factory
+    interface Factory{
+        fun create() : MainComponent
+    }
+
+    fun inject(mainActivity: MainActivity)
+}

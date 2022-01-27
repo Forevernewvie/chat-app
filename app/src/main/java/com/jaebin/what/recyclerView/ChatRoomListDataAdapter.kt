@@ -1,8 +1,6 @@
 package com.jaebin.what.recyclerView
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,19 +11,12 @@ import com.jaebin.what.ConstantsVal.REF
 import com.jaebin.what.R
 import com.jaebin.what.databinding.ChatcardBinding
 import com.jaebin.what.firebaseapi.Authentication
-import com.jaebin.what.firebaseapi.ChatDataBase
-import com.jaebin.what.firebaseapi.ChatRoomDataBase
 import com.jaebin.what.model.ChatRoomModel
-import org.koin.android.ext.android.inject
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import org.koin.java.KoinJavaComponent.inject
 
 
-class ChatRoomListDataAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),KoinComponent {
+class ChatRoomListDataAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var roomData = mutableListOf<ChatRoomModel>()
-    private val chatRoomInfoDataBase : ChatRoomDataBase by inject()
-    private val chatRoomContentDataBase: ChatDataBase by inject()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

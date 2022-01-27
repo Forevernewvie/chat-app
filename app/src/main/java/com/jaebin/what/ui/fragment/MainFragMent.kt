@@ -21,16 +21,13 @@ import com.jaebin.what.databinding.FragmentMainBinding
 import com.jaebin.what.signutil.GoogleLogin
 import com.jaebin.what.utils.OnSuccessOrFail
 import com.jaebin.what.viewmodel.MainViewModel
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment: Fragment() {
 
     private lateinit var mainFragmentBinding:FragmentMainBinding
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val googleLoginUtil : GoogleLogin by inject()
-    private val mainViewModel : MainViewModel by viewModel()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
